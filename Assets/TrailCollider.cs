@@ -10,7 +10,6 @@ using UnityEngine;
 public class TrailCollider : MonoBehaviour
 {
     public TrailRenderer _tr; //assign the trailrenderer in editor.
-    EdgeCollider2D _ec;
 
     // Dylan Code
     Vector3 prevPoint;
@@ -20,7 +19,6 @@ public class TrailCollider : MonoBehaviour
 
     void Awake()
     {
-        _ec = this.GetComponent<EdgeCollider2D>();
     }
     void Update()
     {
@@ -37,20 +35,13 @@ public class TrailCollider : MonoBehaviour
 
         if (lastX != currPoint.x | lastY != currPoint.y)
         {
-            Debug.Log("New Point x: " + lastX);
-            // prevPoint = currPoint;
-            // currPoint = pointsInTrailRenderer.Last();
 
             if (lastX != prevPoint.x | lastY != prevPoint.y)
             {
-                Debug.Log("Not Previous");
                 if (pointsInTrailRenderer.Length > 1)
                 {
-                    Debug.Log("Points in trail: " + pointsInTrailRenderer.Length);
                     Vector3[] pointsWithoutLast = pointsInTrailRenderer.SkipLast(1).ToArray();
-                    Debug.Log("Points without last length: " + pointsWithoutLast.Length);
                     double[,] positions = new double[pointsWithoutLast.Length, 2];
-                    Debug.Log("Empty array: " + positions.GetLength(0));
                     for(int i=0; i < pointsWithoutLast.Length; i++)
                     {
                         double positionX = Math.Round(pointsWithoutLast[i].x, 2);
@@ -59,9 +50,6 @@ public class TrailCollider : MonoBehaviour
                         positions[i,1] = positionY;
                     }
 
-                    Debug.Log("Positions Length: " + positions.GetLength(0));
-                    Debug.Log("Last X: " + lastX);
-                    Debug.Log("Last Y: " + lastY);
                     for(int i=0; i < positions.GetLength(0); i++)
                     {
                         double errorMargin = 0.07;
@@ -70,8 +58,6 @@ public class TrailCollider : MonoBehaviour
 
                         if (xDiff < errorMargin & yDiff < errorMargin)
                         {
-                            Debug.Log("CROSSED!: " + lastX + ", " + lastY);
-                            Debug.Log("Final Positions Length: " + positions.GetLength(0));
                             crossed = true;
 
                             Vector3[] freshList = new Vector3[]{};
@@ -89,7 +75,6 @@ public class TrailCollider : MonoBehaviour
         {
             edgePoints.Add(new Vector2(point.x,point.y));
         }
-        _ec.SetPoints(edgePoints);
         // string[] resultArray = Array.ConvertAll(pointsInTrailRenderer, x => x.ToString());
         if (!crossed)
         {
