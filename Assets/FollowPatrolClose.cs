@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RandomPatrol : MonoBehaviour
+public class FollowPatrolClose : MonoBehaviour
 {
 
     public float minX;
@@ -25,19 +25,16 @@ public class RandomPatrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetPosition = GetRandomPosition();
+        targetPosition = GameObject.Find("Spider").transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Vector2)transform.position != targetPosition)
-        {
-            speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-        } else {
-            targetPosition = GetRandomPosition();
-        }
+        targetPosition = GameObject.Find("Spider").transform.position;
+        speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+    
     }
 
     Vector2 GetRandomPosition() {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RandomPatrol : MonoBehaviour
+public class FollowPatrol : MonoBehaviour //Less close AI follow. For real tailgate look at file 'FollowPatrolClose'
 {
 
     public float minX;
@@ -25,7 +25,7 @@ public class RandomPatrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetPosition = GetRandomPosition();
+        targetPosition = GameObject.Find("Spider").transform.position;
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class RandomPatrol : MonoBehaviour
             speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         } else {
-            targetPosition = GetRandomPosition();
+            targetPosition = GameObject.Find("Spider").transform.position;
         }
     }
 
