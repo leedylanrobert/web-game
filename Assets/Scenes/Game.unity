@@ -1128,7 +1128,7 @@ MonoBehaviour:
   maxX: 8.4
   maxY: 4.5
   minSpeed: 0.75
-  maxSpeed: 3
+  maxSpeed: 20
   secondsToMaxDifficulty: 60
   restartPanel: {fileID: 1231129860}
 --- !u!212 &1510191591
