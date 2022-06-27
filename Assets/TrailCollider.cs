@@ -65,29 +65,20 @@ public class TrailCollider : MonoBehaviour
                         crossed = intersect(newPoint, prevPoint, headPoint, tailPoint);
                         if (crossed)
                         {
-                            Debug.Log("New Point:" + newPoint.x + ", " + newPoint.y);
-                            Debug.Log("Prev Point: " + prevPoint.x + ", " + prevPoint.y);
-                            Debug.Log("Head Point: " + headPoint.x + ", " + headPoint.y);
-                            Debug.Log("Tail Point: " + tailPoint.x + ", " + tailPoint.y);
+                            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Planets");
 
                             Vector2 intersection = CreateIntersection(newPoint, prevPoint, headPoint, tailPoint);
                             Vector2[] rawLoop = pointsInTrailRenderer;
                             rawLoop[rawLoop.Length - 1] = intersection;
-                            Debug.Log("Raw loop length: " + rawLoop.Length);
-                            Debug.Log("Cut off: " + (i-1));
+
                             Vector2[] finalLoop = CreateLoopArray(rawLoop, i - 1);
-                            int[] triangles;
-                            string errorMessage = "";
+                            bool[] killEnemies = IsInsideWeb(enemies, finalLoop);
+                            KillEnemies(enemies, killEnemies);
+                            Debug.Log("Kill length: " + killEnemies.Length);
                             Debug.Log("Final loop length: " + finalLoop.Length);
 
-                            for (int j=0; j < finalLoop.Length; j++)
-                            {
-                                Vector2 logPoint = finalLoop[j];
-                                Debug.Log("T Point " + j + ": " + logPoint.x + ", " + logPoint.y);
-                            }
-                            Triangulate(finalLoop, out triangles, out errorMessage);
                             crossed = false;
-                            Debug.Log("Triangulated triangles length: " + triangles.Length);
+                            _tr.Clear();
                         }
                     }
                 }
@@ -99,6 +90,45 @@ public class TrailCollider : MonoBehaviour
         {
             Debug.Log("CROSS!!!!!!!!!!!!!!!!");
         }
+    }
+
+    void KillEnemies(GameObject[] enemies, bool[] inWeb)
+    {
+        for (int i=0; i < inWeb.Length; i++)
+        {
+            if (inWeb[i])
+            {
+                Destroy(enemies[i]);
+            }
+        }
+    }
+
+    bool[] IsInsideWeb(GameObject[] enemies, Vector2[] polygonPoints)
+    {
+        bool[] final = Enumerable.Repeat(false, enemies.Length).ToArray();
+        float xMax = 8.4f;
+
+        for (int i=0; i < polygonPoints.Length; i++)
+        {
+            int prevIndex = i - 1 < 0 ? polygonPoints.Length - 1 : i - 1;
+            Vector2 headPoint = polygonPoints[i];
+            Vector2 tailPoint = polygonPoints[prevIndex];
+
+            for (int j=0; j < enemies.Length; j++)
+            {
+                GameObject enemyGameObject = enemies[j];
+                float enemyX = enemyGameObject.transform.position.x;
+                float enemyY = enemyGameObject.transform.position.y;
+                Vector2 enemyPoint = new Vector2(enemyX, enemyY);
+                Vector2 enemyRayPoint = new Vector2(xMax, enemyY);
+                if (intersect(headPoint, tailPoint, enemyPoint, enemyRayPoint))
+                {
+                    final[j] = !final[j];
+                }
+            }
+        }
+
+        return final;
     }
 
     Vector2 CreateIntersection(Vector2 newPoint, Vector2 prevPoint, Vector2 headPoint, Vector2 tailPoint)
@@ -142,31 +172,7 @@ public class TrailCollider : MonoBehaviour
         pointsSet.CopyTo(uniquePoints);
         Debug.Log("Unique length: " + uniquePoints.Length);
 
-        // Filter out any colinear points
-        HashSet<Vector2> finalSet = new HashSet<Vector2>();
-        for (int i=0; i < uniquePoints.Length; i++)
-        {
-            Vector2 currPoint = uniquePoints[i];
-            int prevIndex = i - 1 < 0 ? uniquePoints.Length - 1 : i - 1;
-            Vector2 prevPoint = uniquePoints[prevIndex];
-            int nextIndex  = i + 1 >= uniquePoints.Length ? 0 : i + 1;
-            Vector2 nextPoint = uniquePoints[nextIndex];
-
-            if (!IsColinear(prevPoint, currPoint, nextPoint))
-            {
-                finalSet.Add(currPoint);
-            }
-            else
-            {
-                Debug.Log("Colinear");
-            }
-        }
-
-        Vector2[] finalLoop = new Vector2[finalSet.Count];
-        finalSet.CopyTo(finalLoop);
-        Debug.Log("Final length: " + finalLoop.Length);
-
-        return finalLoop;
+        return uniquePoints;
     }
 
     bool IsColinear(Vector2 prevPoint, Vector2 currPoint, Vector2 nextPoint)
