@@ -65,7 +65,7 @@ public class TrailCollider : MonoBehaviour
                         crossed = intersect(newPoint, prevPoint, headPoint, tailPoint);
                         if (crossed)
                         {
-                            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Planets");
+                            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
                             Vector2 intersection = CreateIntersection(newPoint, prevPoint, headPoint, tailPoint);
                             Vector2[] rawLoop = pointsInTrailRenderer;

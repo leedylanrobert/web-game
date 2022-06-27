@@ -20,8 +20,6 @@ public class FollowPatrol : MonoBehaviour
 
     public float secondsToMaxDifficulty;
 
-    public GameObject restartPanel;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,15 +39,6 @@ public class FollowPatrol : MonoBehaviour
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         return new Vector2(randomX, randomY);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Spider")
-        {
-            Debug.Log("collided");
-            restartPanel.SetActive(true);
-        }
     }
 
     float GetDifficultyPercent() {
