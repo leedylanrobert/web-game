@@ -20,8 +20,6 @@ public class RandomPatrol : MonoBehaviour
 
     public float secondsToMaxDifficulty;
 
-    public GameObject restartPanel;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,14 +42,6 @@ public class RandomPatrol : MonoBehaviour
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         return new Vector2(randomX, randomY);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Spider") //Makes enemy check name of anything it collides with. Only activates on spider collision
-        {
-            restartPanel.SetActive(true);
-        }
     }
 
     float GetDifficultyPercent() {

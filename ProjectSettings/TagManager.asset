@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Planets
+  - Spider
+  - Enemy
   layers:
   - Default
   - TransparentFX
