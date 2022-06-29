@@ -282,6 +282,7 @@ MonoBehaviour:
   minSpeed: 3
   maxSpeed: 10
   secondsToMaxDifficulty: 60
+  restartPanel: {fileID: 1231129860}
 --- !u!96 &223137645
 TrailRenderer:
   serializedVersion: 2
@@ -1027,7 +1028,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231129860}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1099,7 +1100,6 @@ MonoBehaviour:
   minSpeed: 0.75
   maxSpeed: 3
   secondsToMaxDifficulty: 60
-  restartPanel: {fileID: 1231129860}
 --- !u!1 &1510191586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1115,7 @@ GameObject:
   - component: {fileID: 1510191587}
   m_Layer: 0
   m_Name: Bee
-  m_TagString: Planets
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1176,7 +1176,6 @@ MonoBehaviour:
   minSpeed: 0.1
   maxSpeed: 3
   secondsToMaxDifficulty: 60
-  restartPanel: {fileID: 1231129860}
 --- !u!212 &1510191591
 SpriteRenderer:
   m_ObjectHideFlags: 0

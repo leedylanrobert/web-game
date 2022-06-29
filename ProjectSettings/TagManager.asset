@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Planets
   - Spider
+  - Enemy
   layers:
   - Default
   - TransparentFX
