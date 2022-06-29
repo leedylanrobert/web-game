@@ -66,6 +66,7 @@ public class TrailCollider : MonoBehaviour
                         if (crossed)
                         {
                             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                            Debug.Log("Enemies length: " + enemies.Length);
 
                             Vector2 intersection = CreateIntersection(newPoint, prevPoint, headPoint, tailPoint);
                             Vector2[] rawLoop = pointsInTrailRenderer;
@@ -74,6 +75,7 @@ public class TrailCollider : MonoBehaviour
                             Vector2[] finalLoop = CreateLoopArray(rawLoop, i - 1);
                             bool[] killEnemies = IsInsideWeb(enemies, finalLoop);
                             KillEnemies(enemies, killEnemies);
+                            Debug.Log("killEnemies: " + killEnemies);
                             Debug.Log("Kill length: " + killEnemies.Length);
                             Debug.Log("Final loop length: " + finalLoop.Length);
 
@@ -107,7 +109,7 @@ public class TrailCollider : MonoBehaviour
     bool[] IsInsideWeb(GameObject[] enemies, Vector2[] polygonPoints)
     {
         bool[] final = Enumerable.Repeat(false, enemies.Length).ToArray();
-        float xMax = 8.4f;
+        float xMax = 9f;
 
         for (int i=0; i < polygonPoints.Length; i++)
         {
