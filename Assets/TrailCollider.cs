@@ -99,6 +99,7 @@ public class TrailCollider : MonoBehaviour
             if (inWeb[i])
             {
                 Destroy(enemies[i]);
+                ScoreManager.instance.AddPoint();
             }
         }
     }
