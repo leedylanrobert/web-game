@@ -7,7 +7,7 @@ using UnityEditor;
 public class SpawnEnemy : MonoBehaviour
 {
     public GameObject enemy;
-    public float interval = 500;
+    public float interval = 1000;
     private float counter = 0;
     private System.Random random = new System.Random();
     private Vector3[] spawnPoints = new Vector3[]{new Vector3(-7.5f, 3.6f, 0), new Vector3(-7.5f, -3.6f, 0), new Vector3(7.5f, 3.6f, 0), new Vector3(7.5f, -3.6f, 0)};
