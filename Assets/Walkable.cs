@@ -24,13 +24,9 @@ namespace Movement
         }
 
         private void FixedUpdate() {
-            Debug.Log("fixed update");
             var desiredVelocity = direction * speed;
-            Debug.Log("Desire velocity: " + desiredVelocity);
             var deltaVelocity = desiredVelocity - rigidbody.velocity;
-            Debug.Log("Delta velocity: " + deltaVelocity);
             Vector3 moveForce = deltaVelocity * (force * ForcePower * Time.fixedDeltaTime);
-            Debug.Log("move force: " + moveForce);
             rigidbody.AddForce(moveForce);
         }
     }

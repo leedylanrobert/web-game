@@ -6,7 +6,11 @@ using UnityEditor;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject ant;
+    public GameObject bee;
+    public GameObject dragonfly;
+    private GameObject[] enemies;
+
     public float interval = 1000;
     private float counter = 0;
     private System.Random random = new System.Random();
@@ -15,7 +19,7 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+      enemies = new GameObject[]{ant, bee, dragonfly};
     }
 
     // Update is called once per frame
@@ -24,11 +28,15 @@ public class SpawnEnemy : MonoBehaviour
         counter += 1;
         if(counter >= interval)
         {
+            // Get random enemy
+            int enemyIndex = random.Next(3);
+            GameObject randomEnemy = enemies[enemyIndex];
+
             // Get random spawn point
             int randomIndex = random.Next(4);
             Vector3 randomPoint = spawnPoints[randomIndex];
             counter = 0;
-            Instantiate(enemy, randomPoint, transform.rotation);
+            Instantiate(randomEnemy, randomPoint, transform.rotation);
         }
     }
 }

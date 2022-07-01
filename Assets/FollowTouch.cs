@@ -20,10 +20,13 @@ public class FollowTouch : MonoBehaviour
     public float secondsToMaxDifficulty;
     public GameObject restartPanel;
 
+    public AudioClip loss;
+    float volume = 1;
+    public bool collided = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        targetPosition = GetRandomPosition();
     }
 
     // Update is called once per frame
@@ -50,6 +53,12 @@ public class FollowTouch : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            if (!collided)
+            {
+                AudioSource.PlayClipAtPoint(loss, transform.position, volume);
+                collided = true;
+            }
+
             Debug.Log("collided");
             restartPanel.SetActive(true);
         }
