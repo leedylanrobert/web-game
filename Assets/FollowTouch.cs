@@ -38,6 +38,13 @@ public class FollowTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            targetPosition = touchPosition;
+        }
+
         Vector2 currentPosition = transform.position;
         if (targetPosition != null & targetPosition != currentPosition) 
         {
@@ -46,45 +53,32 @@ public class FollowTouch : MonoBehaviour
             
             if (Mathf.Abs(xdiff) >= Mathf.Abs(ydiff)) 
             {
-                if (xdiff >= 1)
+                if (xdiff >= 0)
                 {
-                    Debug.Log("Left");
                     direction = 2;
                 }
                 else
                 {
-                    Debug.Log("Right");
                     direction = 3;
                 }
             }
             else
             {
-                if (ydiff >= 1)
+                if (ydiff >= 0)
                 {
-                    Debug.Log("Down");
                     direction = 0;
                 }
                 else
                 {
-                    Debug.Log("Up");
                     direction = 1;
                 }
             }
-            Debug.Log("Moving");
             anim.SetBool("moving", true);
             anim.SetInteger("direction", direction);
         }
         else
         {
-            Debug.Log("Idle");
             anim.SetBool("moving", false);
-        }
-
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            targetPosition = touchPosition;
         }
 
         speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
