@@ -26,52 +26,52 @@ public class Entry : MonoBehaviour
                 newX = Random.Range(-xMax, xMax);
                 newY = 5.4f;
                 position = new Vector2(newX,newY);
-                targetPosition = new Vector2(newX,newY - .8f);
+                transform.position = position;
                 break;
             case 1:
                 Debug.Log("Right");
                 newX = (160f / 18f) + .4f;
                 newY = Random.Range(-4.6f, 4.6f);
                 position = new Vector2(newX,newY);
-                targetPosition = new Vector2(newX - .8f,newY);
+                transform.position = position;
                 break;
             case 2:
                 Debug.Log("Down");
                 newX = Random.Range(-xMax, xMax);
                 newY = -5.4f;
                 position = new Vector2(newX,newY);
-                targetPosition = new Vector2(newX,newY + .8f);
+                transform.position = position;
                 break;
             case 3:
                 Debug.Log("Left");
                 newX = (-160f / 18f) - .4f;
                 newY = Random.Range(-4.6f, 4.6f);
                 position = new Vector2(newX,newY);
-                targetPosition = new Vector2(newX + .8f,newY);
+                transform.position = position;
                 break;
             default:
                 Debug.Log("Default");
                 break;
         }
-        transform.position = position;
+        isOnScreen = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isOnScreen)
-        {
-            Vector2 currentPosition = transform.position;
-            if (currentPosition != targetPosition)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, targetPosition, entrySpeed * Time.deltaTime);
-            }
-            else
-            {
-                Debug.Log("On screen!!");
-                isOnScreen = true;
-            }
-        }
+    //     if (!isOnScreen)
+    //     {
+    //         Vector2 currentPosition = transform.position;
+    //         if (currentPosition != targetPosition)
+    //         {
+    //             transform.position = Vector2.MoveTowards(transform.position, targetPosition, entrySpeed * Time.deltaTime);
+    //         }
+    //         else
+    //         {
+    //             Debug.Log("On screen!!");
+    //             isOnScreen = true;
+    //         }
+    //     }
     }
 }
 
