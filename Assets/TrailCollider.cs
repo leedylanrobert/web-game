@@ -17,7 +17,13 @@ public class TrailCollider : MonoBehaviour
     Vector2 currPoint;
     private int[] triangles;
 
+    public AudioClip splat;
+    public AudioClip ding;
+    float volume = 500f;
+
     bool crossed = false;
+
+
 
     void Awake()
     {
@@ -31,15 +37,16 @@ public class TrailCollider : MonoBehaviour
     {
         Vector3[] pointsInTrailRenderer3d = new Vector3[_tr.positionCount]; 
         _tr.GetPositions(pointsInTrailRenderer3d);
-
         Vector2[] pointsInTrailRenderer = ConvertArray(pointsInTrailRenderer3d); 
-
-        Vector2 newPoint = pointsInTrailRenderer.Last();
-        double newX = newPoint.x;
-        double newY = newPoint.y;
 
         if (pointsInTrailRenderer.Length > 1)
         {
+
+            Vector2 newPoint = pointsInTrailRenderer.Last();
+            double newX = newPoint.x;
+            double newY = newPoint.y;
+
+
             Vector2[] pointsWithoutNewest = pointsInTrailRenderer.SkipLast(1).ToArray();
             Vector2 prevPoint = pointsWithoutNewest.Last();
 
@@ -65,6 +72,7 @@ public class TrailCollider : MonoBehaviour
                         crossed = intersect(newPoint, prevPoint, headPoint, tailPoint);
                         if (crossed)
                         {
+                            
                             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
                             Vector2 intersection = CreateIntersection(newPoint, prevPoint, headPoint, tailPoint);
@@ -73,9 +81,8 @@ public class TrailCollider : MonoBehaviour
 
                             Vector2[] finalLoop = CreateLoopArray(rawLoop, i - 1);
                             bool[] killEnemies = IsInsideWeb(enemies, finalLoop);
+                            AudioSource.PlayClipAtPoint(splat, transform.position, volume);
                             KillEnemies(enemies, killEnemies);
-                            Debug.Log("Kill length: " + killEnemies.Length);
-                            Debug.Log("Final loop length: " + finalLoop.Length);
 
                             crossed = false;
                             _tr.Clear();
@@ -83,12 +90,6 @@ public class TrailCollider : MonoBehaviour
                     }
                 }
             }
-        }
-
-        
-        if (crossed)
-        {
-            Debug.Log("CROSS!!!!!!!!!!!!!!!!");
         }
     }
 
@@ -99,6 +100,8 @@ public class TrailCollider : MonoBehaviour
             if (inWeb[i])
             {
                 Destroy(enemies[i]);
+                ScoreManager.instance.AddPoint();
+                AudioSource.PlayClipAtPoint(ding, transform.position, volume);
             }
         }
     }
@@ -106,7 +109,7 @@ public class TrailCollider : MonoBehaviour
     bool[] IsInsideWeb(GameObject[] enemies, Vector2[] polygonPoints)
     {
         bool[] final = Enumerable.Repeat(false, enemies.Length).ToArray();
-        float xMax = 8.4f;
+        float xMax = 20f;
 
         for (int i=0; i < polygonPoints.Length; i++)
         {
@@ -170,7 +173,6 @@ public class TrailCollider : MonoBehaviour
         // Convert to array
         Vector2[] uniquePoints = new Vector2[pointsSet.Count];
         pointsSet.CopyTo(uniquePoints);
-        Debug.Log("Unique length: " + uniquePoints.Length);
 
         return uniquePoints;
     }
