@@ -42,7 +42,7 @@ public class FollowPatrol : MonoBehaviour
         }
         else
         {
-            if (entry.isOnScreen == true)
+            if (entry.isSpawned == true)
             {
                 Debug.Log("Entry working");
                 startMoving = true;

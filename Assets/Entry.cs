@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Entry : MonoBehaviour
 {
-    public bool isOnScreen = false;
+    public bool isSpawned = false;
     private Vector2 position;
     private Vector2 targetPosition;
     public float entrySpeed;
@@ -53,25 +53,12 @@ public class Entry : MonoBehaviour
                 Debug.Log("Default");
                 break;
         }
-        isOnScreen = true;
+        isSpawned = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-    //     if (!isOnScreen)
-    //     {
-    //         Vector2 currentPosition = transform.position;
-    //         if (currentPosition != targetPosition)
-    //         {
-    //             transform.position = Vector2.MoveTowards(transform.position, targetPosition, entrySpeed * Time.deltaTime);
-    //         }
-    //         else
-    //         {
-    //             Debug.Log("On screen!!");
-    //             isOnScreen = true;
-    //         }
-    //     }
     }
 }
 
