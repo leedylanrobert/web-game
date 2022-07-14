@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8972363744189073354}
   - component: {fileID: 8972363744189073353}
   - component: {fileID: 8972363744189073352}
+  - component: {fileID: -8274392007037594249}
   m_Layer: 0
   m_Name: Dragonfly
   m_TagString: Enemy
@@ -138,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkable: {fileID: 8972363744189073352}
+  entry: {fileID: -8274392007037594249}
 --- !u!114 &8972363744189073352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +155,17 @@ MonoBehaviour:
   rigidbody: {fileID: 8972363744189073354}
   speed: 10
   force: 3
+--- !u!114 &-8274392007037594249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972363744189073367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cda6979ca5258a49a1953510d01971d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSpawned: 0
+  countdown: {fileID: 6238157655008097528, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}

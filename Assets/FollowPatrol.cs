@@ -40,13 +40,9 @@ public class FollowPatrol : MonoBehaviour
             speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         }
-        else
+        else if (entry.isSpawned == true) 
         {
-            if (entry.isSpawned == true)
-            {
-                Debug.Log("Entry working");
-                startMoving = true;
-            }
+            startMoving = true;
         }
 
     }

@@ -6,12 +6,22 @@ using Movement;
 public class Character : MonoBehaviour {
 
     public Walkable walkable;
-    public Entry Entry;
+    public Entry entry;
 
-    private void Update() {
-        
-        Transform target = GameObject.Find("Spider").transform;
-        var directionTowardsTarget = (target.position - this.transform.position).normalized;
-        walkable.MoveTo(directionTowardsTarget);
+    private bool startMoving = false;
+
+    private void Update() 
+    {
+        if (startMoving)
+        {
+            Transform target = GameObject.Find("Spider").transform;
+            var directionTowardsTarget = (target.position - this.transform.position).normalized;
+            walkable.MoveTo(directionTowardsTarget);
+        }
+        else if (entry.isSpawned == true)
+        {
+            startMoving = true;
+        }
+
     }
 }

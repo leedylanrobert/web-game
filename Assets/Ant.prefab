@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6466899754803479420}
   - component: {fileID: 6466899754803479418}
   - component: {fileID: 287175464777020727}
-  - component: {fileID: -2305074496369640540}
   m_Layer: 0
   m_Name: Ant
   m_TagString: Enemy
@@ -159,18 +158,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpawned: 0
-  entrySpeed: 0.5
---- !u!114 &-2305074496369640540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6466899754803479421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a90eaab132bad4647858ac19434c5b25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyDamage: 0
-  _healthController: {fileID: 0}
+  countdown: {fileID: 6238157655008097528, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}

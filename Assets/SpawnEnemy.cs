@@ -25,15 +25,14 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update enemy");
+        Debug.Log("Height: " + Screen.height);
+        Debug.Log("Width: " + Screen.width);
         counter += 1;
         if(counter >= interval)
         {
-            Debug.Log("spawn time");
             // Get random enemy
             int enemyIndex = random.Next(3);
-            // GameObject randomEnemy = enemies[enemyIndex];
-            GameObject randomEnemy = enemies[0];
+            GameObject randomEnemy = enemies[enemyIndex];
 
             // Get random spawn point
             int randomIndex = random.Next(4);

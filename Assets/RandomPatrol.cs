@@ -20,6 +20,9 @@ public class RandomPatrol : MonoBehaviour
 
     public float secondsToMaxDifficulty;
 
+    public Entry entry;
+    private bool startMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +32,21 @@ public class RandomPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Vector2)transform.position != targetPosition)
+        if (startMoving)
         {
-            speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-        } else {
-            targetPosition = GetRandomPosition();
+            if ((Vector2)transform.position != targetPosition)
+            {
+                speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            } else {
+                targetPosition = GetRandomPosition();
+            }
         }
+        else if (entry.isSpawned == true)
+        {
+            startMoving = true;
+        }
+
     }
 
     Vector2 GetRandomPosition() {
