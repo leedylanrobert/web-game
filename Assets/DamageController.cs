@@ -48,7 +48,6 @@ public class DamageController : MonoBehaviour
             }
         }
         interval += 1;
-        Debug.Log("interval: " + interval);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Entry : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Entry : MonoBehaviour
     private Vector2 targetPosition;
 
     public GameObject countdown;
+    public TMP_Text test;
+    public SpriteRenderer enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -25,32 +28,36 @@ public class Entry : MonoBehaviour
         switch (side)
         {
             case 0:
+                // Up
                 newX = Random.Range(-xMax, xMax);
                 newY = 5.4f;
                 position = new Vector2(newX,newY);
                 transform.position = position;
-                countdownPosition = new Vector2(newX, newY - .8f);
+                countdownPosition = new Vector2(newX, newY - .4f);
                 break;
             case 1:
+                // Right
                 newX = (160f / 18f) + .4f;
                 newY = Random.Range(-4.6f, 4.6f);
                 position = new Vector2(newX,newY);
                 transform.position = position;
-                countdownPosition = new Vector2(newX - .8f, newY);
+                countdownPosition = new Vector2(newX - 1.0f, newY);
                 break;
             case 2:
+                // Down
                 newX = Random.Range(-xMax, xMax);
                 newY = -5.4f;
                 position = new Vector2(newX,newY);
                 transform.position = position;
-                countdownPosition = new Vector2(newX, newY + .8f);
+                countdownPosition = new Vector2(newX, newY + 1.2f);
                 break;
-            case 3:
+            case 3: 
+                // Left
                 newX = (-160f / 18f) - .4f;
                 newY = Random.Range(-4.6f, 4.6f);
                 position = new Vector2(newX,newY);
                 transform.position = position;
-                countdownPosition = new Vector2(newX + .8f, newY);
+                countdownPosition = new Vector2(newX + .6f, newY);
                 break;
             default:
                 Debug.Log("Default");
@@ -59,7 +66,8 @@ public class Entry : MonoBehaviour
         }
         Transform parent = GameObject.Find("Canvas").transform;
         Vector3 countdownVector3 = countdownPosition;
-        Instantiate(countdown, countdownVector3, transform.rotation, parent);
+        test.color = enemy.color;
+        Instantiate(test, countdownVector3, transform.rotation, parent);
         isSpawned = true;
     }
 

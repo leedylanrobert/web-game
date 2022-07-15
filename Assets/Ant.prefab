@@ -159,3 +159,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawned: 0
   countdown: {fileID: 6238157655008097528, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
+  test: {fileID: 5489004746478108274, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
+  enemy: {fileID: 6466899754803479417}
