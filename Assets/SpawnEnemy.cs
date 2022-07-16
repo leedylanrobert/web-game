@@ -9,6 +9,7 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject ant;
     public GameObject bee;
     public GameObject dragonfly;
+    public GameObject beetle;
     private GameObject[] enemies;
 
     public float interval = 250;
@@ -19,19 +20,17 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      enemies = new GameObject[]{ant, bee, dragonfly};
+      enemies = new GameObject[]{ant, bee, dragonfly, beetle};
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Height: " + Screen.height);
-        Debug.Log("Width: " + Screen.width);
         counter += 1;
         if(counter >= interval)
         {
             // Get random enemy
-            int enemyIndex = random.Next(3);
+            int enemyIndex = random.Next(4);
             GameObject randomEnemy = enemies[enemyIndex];
 
             // Get random spawn point

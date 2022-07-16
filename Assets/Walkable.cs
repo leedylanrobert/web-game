@@ -23,7 +23,8 @@ namespace Movement
             MoveTo(Vector2.zero);
         }
 
-        private void FixedUpdate() {
+        private void FixedUpdate() 
+        {
             var desiredVelocity = direction * speed;
             var deltaVelocity = desiredVelocity - rigidbody.velocity;
             Vector3 moveForce = deltaVelocity * (force * ForcePower * Time.fixedDeltaTime);

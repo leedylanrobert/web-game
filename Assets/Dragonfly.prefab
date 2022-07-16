@@ -155,6 +155,7 @@ MonoBehaviour:
   rigidbody: {fileID: 8972363744189073354}
   speed: 10
   force: 3
+  constant: 1
 --- !u!114 &-8274392007037594249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpawned: 0
-  countdown: {fileID: 6238157655008097528, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
-  test: {fileID: 5489004746478108274, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
+  countdown: {fileID: 5489004746478108274, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
   enemy: {fileID: 8972363744189073357}
+  tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
+  spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}

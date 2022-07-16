@@ -9,9 +9,16 @@ public class Entry : MonoBehaviour
     private Vector2 position;
     private Vector2 targetPosition;
 
-    public GameObject countdown;
-    public TMP_Text test;
+    public TMP_Text countdown;
     public SpriteRenderer enemy;
+
+    private float timeElapsed = 0f;
+    private TMP_Text selfText;
+
+    public AudioClip tick;
+    public AudioClip spawn;
+    float volume = 1;
+    private int playedTimes = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -66,14 +73,52 @@ public class Entry : MonoBehaviour
         }
         Transform parent = GameObject.Find("Canvas").transform;
         Vector3 countdownVector3 = countdownPosition;
-        test.color = enemy.color;
-        Instantiate(test, countdownVector3, transform.rotation, parent);
-        isSpawned = true;
+        countdown.color = enemy.color;
+        countdown.text = "3";
+        selfText = Instantiate(countdown, countdownVector3, transform.rotation, parent);
+        AudioSource.PlayClipAtPoint(tick, transform.position, volume);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Current countdown text: " + countdown.text);
+        if (timeElapsed > 4f)
+        {
+            Destroy(selfText);
+        }
+        if (timeElapsed > 3f)
+        {
+            isSpawned = true;
+            selfText.text = "!";
+            countdown.color = Color.white;
+            if (playedTimes < 4)
+            {
+                AudioSource.PlayClipAtPoint(spawn, transform.position, volume);
+                playedTimes++;
+            }
+        }
+        else if (timeElapsed > 2f)
+        {
+            selfText.text = "1";
+            countdown.color = enemy.color;
+            if (playedTimes < 3)
+            {
+                AudioSource.PlayClipAtPoint(tick, transform.position, volume);
+                playedTimes++;
+            }
+        }
+        else if (timeElapsed > 1f)
+        {
+            selfText.text = "2";
+            countdown.color = Color.white;
+            if (playedTimes < 2)
+            {
+                AudioSource.PlayClipAtPoint(tick, transform.position, volume);
+                playedTimes++;
+            }
+        }
+        timeElapsed += Time.deltaTime;
     }
 }
 
