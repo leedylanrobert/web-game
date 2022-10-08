@@ -7,6 +7,8 @@ TagManager:
   - Planets
   - Spider
   - Enemy
+  - Countdown
+  - Hearts
   layers:
   - Default
   - TransparentFX

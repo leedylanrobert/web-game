@@ -67,7 +67,6 @@ public class Entry : MonoBehaviour
                 countdownPosition = new Vector2(newX + .6f, newY);
                 break;
             default:
-                Debug.Log("Default");
                 countdownPosition = new Vector2(newX + .8f, newY);
                 break;
         }
@@ -82,7 +81,6 @@ public class Entry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Current countdown text: " + countdown.text);
         if (timeElapsed > 4f)
         {
             Destroy(selfText);

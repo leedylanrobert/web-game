@@ -6,6 +6,8 @@ using UnityEditor;
 
 public class SpawnEnemy : MonoBehaviour
 {
+    public bool keepSpawning = true;
+
     public GameObject ant;
     public GameObject bee;
     public GameObject dragonfly;
@@ -26,18 +28,20 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        counter += 1;
-        if(counter >= interval)
-        {
-            // Get random enemy
-            int enemyIndex = random.Next(4);
-            GameObject randomEnemy = enemies[enemyIndex];
+        if (keepSpawning) {
+            counter += 1;
+            if(counter >= interval)
+            {
+                // Get random enemy
+                int enemyIndex = random.Next(4);
+                GameObject randomEnemy = enemies[enemyIndex];
 
-            // Get random spawn point
-            int randomIndex = random.Next(4);
-            Vector3 randomPoint = spawnPoints[randomIndex];
-            counter = 0;
-            Instantiate(randomEnemy, randomPoint, transform.rotation);
+                // Get random spawn point
+                int randomIndex = random.Next(4);
+                Vector3 randomPoint = spawnPoints[randomIndex];
+                counter = 0;
+                Instantiate(randomEnemy, randomPoint, transform.rotation);
+            }
         }
     }
 }
