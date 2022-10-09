@@ -703,7 +703,6 @@ MonoBehaviour:
   ant: {fileID: 6466899754803479421, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
   bee: {fileID: 1379638258938177318, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
   dragonfly: {fileID: 8972363744189073367, guid: 381419d9e8688d646b4af71a7266bd2e, type: 3}
-  beetle: {fileID: 4405411952073513436, guid: 5e84231000d3200448b84751596d5414, type: 3}
   interval: 250
 --- !u!4 &588836088
 Transform:
@@ -2124,6 +2123,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1379638258938177315, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379638258938177315, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379638258938177315, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379638258938177315, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
+      propertyPath: m_Color.r
+      value: 0.85490197
+      objectReference: {fileID: 0}
     - target: {fileID: 1379638258938177318, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
       propertyPath: m_Name
       value: Bee
@@ -2391,6 +2406,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6466899754803479417, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466899754803479417, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
+      propertyPath: m_Color.g
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466899754803479417, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466899754803479417, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6466899754803479418, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
       propertyPath: restartPanel
       value: 
@@ -2407,6 +2438,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7947792032663448995, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f7f97b8e32d1b46428612832a717498f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
 --- !u!1001 &8972363745074769304

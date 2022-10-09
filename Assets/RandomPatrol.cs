@@ -22,11 +22,15 @@ public class RandomPatrol : MonoBehaviour
 
     public Entry entry;
     private bool startMoving = false;
+    private int direction;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         targetPosition = GetRandomPosition();
+        direction = 0;
     }
 
     // Update is called once per frame
@@ -40,13 +44,48 @@ public class RandomPatrol : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             } else {
                 targetPosition = GetRandomPosition();
+                SetDirection(targetPosition);
             }
         }
         else if (entry.isSpawned == true)
         {
             startMoving = true;
+            SetDirection(targetPosition);
         }
 
+    }
+
+     private void SetDirection(Vector2 targetPosition) {
+
+        Vector2 currentPosition = transform.position;
+
+        float xdiff = currentPosition.x - targetPosition.x;
+        float ydiff = currentPosition.y - targetPosition.y;
+
+        if (Mathf.Abs(xdiff) >= Mathf.Abs(ydiff)) 
+            {
+                if (xdiff >= 0)
+                {
+                    direction = 2;
+                }
+                else
+                {
+                    direction = 3;
+                }
+            }
+            else
+            {
+                if (ydiff >= 0)
+                {
+                    direction = 0;
+                }
+                else
+                {
+                    direction = 1;
+                }
+            }
+
+        anim.SetInteger("direction", direction);
     }
 
     Vector2 GetRandomPosition() {

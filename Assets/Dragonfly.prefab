@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8972363744189073353}
   - component: {fileID: 8972363744189073352}
   - component: {fileID: -8274392007037594249}
+  - component: {fileID: 2167169387617560878}
   m_Layer: 0
   m_Name: Dragonfly
   m_TagString: Enemy
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.25098038, g: 1, b: 0.5457902, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.6880624, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -155,7 +156,6 @@ MonoBehaviour:
   rigidbody: {fileID: 8972363744189073354}
   speed: 10
   force: 3
-  constant: 1
 --- !u!114 &-8274392007037594249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +173,23 @@ MonoBehaviour:
   enemy: {fileID: 8972363744189073357}
   tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
   spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}
+--- !u!95 &2167169387617560878
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972363744189073367}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7f97b8e32d1b46428612832a717498f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
