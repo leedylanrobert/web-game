@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Countdown
   - Hearts
+  - Canvas
   layers:
   - Default
   - TransparentFX

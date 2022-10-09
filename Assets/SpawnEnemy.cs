@@ -23,6 +23,13 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
       enemies = new GameObject[]{ant, bee, dragonfly};
+      RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
+      Vector3[] v = new Vector3[4];
+      canvas.GetWorldCorners(v);
+      for (var i = 0; i < 4; i++)
+      {
+        Debug.Log("World Corner " + i + " : " + v[i]);
+      }
     }
 
     // Update is called once per frame

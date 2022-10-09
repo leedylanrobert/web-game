@@ -72,9 +72,7 @@ public class Entry : MonoBehaviour
         }
         Transform parent = GameObject.Find("Canvas").transform;
         Vector3 countdownVector3 = countdownPosition;
-        Debug.Log(enemy.color);
         if (enemy.color.r == 1.00) {
-            Debug.Log("Bee");
             countdown.color = new Color(1.0f, 0.902f, 0.251f, 1.0f);
         }
         else if (enemy.color.r == 0) {
