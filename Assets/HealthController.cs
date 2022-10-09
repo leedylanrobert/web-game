@@ -7,7 +7,7 @@ public class HealthController : MonoBehaviour
 {
     public int playerHealth;
 
-    [SerializeField] private Image[] hearts;
+    [SerializeField] public Image[] hearts;
 
     // Start is called before the first frame update
     void Start()

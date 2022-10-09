@@ -1,13 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Entry : MonoBehaviour
 {
     public bool isSpawned = false;
     private Vector2 position;
     private Vector2 targetPosition;
-    public float entrySpeed;
+
+    public TMP_Text countdown;
+    public SpriteRenderer enemy;
+
+    private float timeElapsed = 0f;
+    private TMP_Text selfText;
+
+    public AudioClip tick;
+    public AudioClip spawn;
+    float volume = 1;
+    private int playedTimes = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -19,46 +30,93 @@ public class Entry : MonoBehaviour
         float newY = 0f;
         float xMax = (160f / 18f) -.4f;
 
+        Vector2 countdownPosition;
+
         switch (side)
         {
             case 0:
-                Debug.Log("Up");
+                // Up
                 newX = Random.Range(-xMax, xMax);
                 newY = 5.4f;
                 position = new Vector2(newX,newY);
                 transform.position = position;
+                countdownPosition = new Vector2(newX, newY - .4f);
                 break;
             case 1:
-                Debug.Log("Right");
+                // Right
                 newX = (160f / 18f) + .4f;
                 newY = Random.Range(-4.6f, 4.6f);
                 position = new Vector2(newX,newY);
                 transform.position = position;
+                countdownPosition = new Vector2(newX - 1.0f, newY);
                 break;
             case 2:
-                Debug.Log("Down");
+                // Down
                 newX = Random.Range(-xMax, xMax);
                 newY = -5.4f;
                 position = new Vector2(newX,newY);
                 transform.position = position;
+                countdownPosition = new Vector2(newX, newY + 1.2f);
                 break;
-            case 3:
-                Debug.Log("Left");
+            case 3: 
+                // Left
                 newX = (-160f / 18f) - .4f;
                 newY = Random.Range(-4.6f, 4.6f);
                 position = new Vector2(newX,newY);
                 transform.position = position;
+                countdownPosition = new Vector2(newX + .6f, newY);
                 break;
             default:
-                Debug.Log("Default");
+                countdownPosition = new Vector2(newX + .8f, newY);
                 break;
         }
-        isSpawned = true;
+        Transform parent = GameObject.Find("Canvas").transform;
+        Vector3 countdownVector3 = countdownPosition;
+        countdown.color = enemy.color;
+        countdown.text = "3";
+        selfText = Instantiate(countdown, countdownVector3, transform.rotation, parent);
+        AudioSource.PlayClipAtPoint(tick, transform.position, volume);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (timeElapsed > 4f)
+        {
+            Destroy(selfText);
+        }
+        if (timeElapsed > 3f)
+        {
+            isSpawned = true;
+            selfText.text = "!";
+            countdown.color = Color.white;
+            if (playedTimes < 4)
+            {
+                AudioSource.PlayClipAtPoint(spawn, transform.position, volume);
+                playedTimes++;
+            }
+        }
+        else if (timeElapsed > 2f)
+        {
+            selfText.text = "1";
+            countdown.color = enemy.color;
+            if (playedTimes < 3)
+            {
+                AudioSource.PlayClipAtPoint(tick, transform.position, volume);
+                playedTimes++;
+            }
+        }
+        else if (timeElapsed > 1f)
+        {
+            selfText.text = "2";
+            countdown.color = Color.white;
+            if (playedTimes < 2)
+            {
+                AudioSource.PlayClipAtPoint(tick, transform.position, volume);
+                playedTimes++;
+            }
+        }
+        timeElapsed += Time.deltaTime;
     }
 }
 

@@ -18,10 +18,6 @@ public class FollowTouch : MonoBehaviour
     float speed;
 
     public float secondsToMaxDifficulty;
-    public GameObject restartPanel;
-
-    public AudioClip loss;
-    float volume = 1;
     public bool collided = false;
 
     private Animator anim;
@@ -89,21 +85,6 @@ public class FollowTouch : MonoBehaviour
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         return new Vector2(randomX, randomY);
-    }
-
-      private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            if (!collided)
-            {
-                AudioSource.PlayClipAtPoint(loss, transform.position, volume);
-                collided = true;
-            }
-
-            Debug.Log("collided");
-            restartPanel.SetActive(true);
-        }
     }
 
     float GetDifficultyPercent() {
