@@ -72,7 +72,17 @@ public class Entry : MonoBehaviour
         }
         Transform parent = GameObject.Find("Canvas").transform;
         Vector3 countdownVector3 = countdownPosition;
-        countdown.color = enemy.color;
+        Debug.Log(enemy.color);
+        if (enemy.color.r == 1.00) {
+            Debug.Log("Bee");
+            countdown.color = new Color(1.0f, 0.902f, 0.251f, 1.0f);
+        }
+        else if (enemy.color.r == 0) {
+            countdown.color = new Color(0.058f, 0.538f, 0.146f, 1.0f);
+        }
+        else {
+            countdown.color = enemy.color;
+        }
         countdown.text = "3";
         selfText = Instantiate(countdown, countdownVector3, transform.rotation, parent);
         AudioSource.PlayClipAtPoint(tick, transform.position, volume);
