@@ -10,7 +10,11 @@ namespace Movement
 
         public new Rigidbody2D rigidbody;
 
-        public float speed = 2f;
+        public float minSpeed = 2f;
+        public float maxSpeed = 4f;
+
+        public float secondsToMaxDifficulty;
+
         public float force = 2f;
 
         private Vector2 direction;
@@ -25,11 +29,16 @@ namespace Movement
 
         private void FixedUpdate() 
         {
-            var desiredVelocity = direction * speed;
+            var desiredVelocity = direction * Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
             var deltaVelocity = desiredVelocity - rigidbody.velocity;
             Vector3 moveForce = deltaVelocity * (force * ForcePower * Time.fixedDeltaTime);
             rigidbody.AddForce(moveForce);
         }
+
+        float GetDifficultyPercent() {
+            return Mathf.Clamp01(Time.timeSinceLevelLoad / secondsToMaxDifficulty);
+        }
     }
+
 }
 

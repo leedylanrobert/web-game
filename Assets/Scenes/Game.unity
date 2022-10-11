@@ -716,8 +716,9 @@ MonoBehaviour:
   ant: {fileID: 6466899754803479421, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
   bee: {fileID: 1379638258938177318, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
   dragonfly: {fileID: 8972363744189073367, guid: 381419d9e8688d646b4af71a7266bd2e, type: 3}
-  interval: 250
   deltaTimeCounter: 5
+  secondsToMaxDifficulty: 60
+  deltaTimeInterval: 6
 --- !u!4 &588836088
 Transform:
   m_ObjectHideFlags: 0
@@ -1690,7 +1691,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241903784}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e34c2ba6a9aaa784b9d05c195590ec7f, type: 3}
@@ -2205,6 +2206,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2529122246198862698, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
+      propertyPath: secondsToMaxDifficulty
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
 --- !u!1001 &4291907953492414075
@@ -2360,6 +2365,10 @@ PrefabInstance:
       propertyPath: entrySpeed
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 287175464777020727, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
+      propertyPath: secondsToMaxDifficulty
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 6466899754803479416, guid: dfc7ce49f0f7fb849815c5b4c671fd58, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2469,6 +2478,10 @@ PrefabInstance:
       propertyPath: countdown
       value: 
       objectReference: {fileID: 6238157655008097528, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
+    - target: {fileID: -8274392007037594249, guid: 381419d9e8688d646b4af71a7266bd2e, type: 3}
+      propertyPath: secondsToMaxDifficulty
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8972363744189073353, guid: 381419d9e8688d646b4af71a7266bd2e, type: 3}
       propertyPath: target
       value: 

@@ -23,6 +23,10 @@ public class Entry : MonoBehaviour
     private float xMax;
     private float yMax;
 
+    public float secondsToMaxDifficulty;
+    private float tickInterval = 4f;
+    private float baseTickInterval = 4f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,46 +38,7 @@ public class Entry : MonoBehaviour
         yMax = topRightWorld.y;
 
         RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
-        //float xMax = canvas.rect.width / 2;
 
-        // switch (side)
-        // {
-        //     case 0:
-        //         // Up
-        //         newX = Random.Range(-xMax, xMax);
-        //         newY = 5.4f;
-        //         position = new Vector2(newX,newY);
-        //         // transform.position = position;
-        //         countdownPosition = new Vector2(newX, newY - .4f);
-        //         break;
-        //     case 1:
-        //         // Right
-        //         newX = (160f / 18f) + .4f;
-        //         newY = Random.Range(-4.6f, 4.6f);
-        //         position = new Vector2(newX,newY);
-        //         // transform.position = position;
-        //         countdownPosition = new Vector2(newX - 1.0f, newY);
-        //         break;
-        //     case 2:
-        //         // Down
-        //         newX = Random.Range(-xMax, xMax);
-        //         newY = -5.4f;
-        //         position = new Vector2(newX,newY);
-        //         // transform.position = position;
-        //         countdownPosition = new Vector2(newX, newY + 1.2f);
-        //         break;
-        //     case 3: 
-        //         // Left
-        //         newX = (-160f / 18f) - .4f;
-        //         newY = Random.Range(-4.6f, 4.6f);
-        //         position = new Vector2(newX,newY);
-        //         // transform.position = position;
-        //         countdownPosition = new Vector2(newX + .6f, newY);
-        //         break;
-        //     default:
-        //         countdownPosition = new Vector2(newX + .8f, newY);
-        //         break;
-        // }
         Vector3 position = transform.position;
         Vector3 countdownPosition;
 
@@ -121,11 +86,11 @@ public class Entry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeElapsed > 4f)
+        if (timeElapsed > tickInterval)
         {
             Destroy(selfText);
         }
-        if (timeElapsed > 3f)
+        if (timeElapsed > (tickInterval * (3f / 4f)))
         {
             isSpawned = true;
             selfText.text = "!";
@@ -136,7 +101,7 @@ public class Entry : MonoBehaviour
                 playedTimes++;
             }
         }
-        else if (timeElapsed > 2f)
+        else if (timeElapsed > (tickInterval / 2f))
         {
             selfText.text = "1";
             countdown.color = enemy.color;
@@ -146,7 +111,7 @@ public class Entry : MonoBehaviour
                 playedTimes++;
             }
         }
-        else if (timeElapsed > 1f)
+        else if (timeElapsed > (tickInterval / 4f))
         {
             selfText.text = "2";
             countdown.color = Color.white;
@@ -156,7 +121,13 @@ public class Entry : MonoBehaviour
                 playedTimes++;
             }
         }
+        tickInterval = baseTickInterval - ((baseTickInterval / 2f) * GetDifficultyPercent());
+        Debug.Log("GetDifficultyPercent: " + GetDifficultyPercent());
         timeElapsed += Time.deltaTime;
+    }
+
+    float GetDifficultyPercent() {
+        return Mathf.Clamp01(Time.timeSinceLevelLoad / secondsToMaxDifficulty);
     }
 }
 

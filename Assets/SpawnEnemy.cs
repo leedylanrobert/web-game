@@ -15,8 +15,11 @@ public class SpawnEnemy : MonoBehaviour
     private float xMax;
     private float yMax;
 
-    public float deltaTimeCounter = 5.0f;
+    public float deltaTimeCounter = 6.0f;
     private System.Random random = new System.Random();
+
+    public float secondsToMaxDifficulty;
+    public float deltaTimeInterval = 6.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +40,7 @@ public class SpawnEnemy : MonoBehaviour
 
             deltaTimeCounter += Time.deltaTime;
 
-            if (deltaTimeCounter >= 5.0f)
+            if (deltaTimeCounter >= deltaTimeInterval)
             {
                 // Get random enemy
                 int enemyIndex = random.Next(3);
@@ -48,6 +51,8 @@ public class SpawnEnemy : MonoBehaviour
                 Instantiate(randomEnemy, RandomPosition(), transform.rotation);
             }
         }
+        
+        deltaTimeInterval = 6.0f - (3.0f * GetDifficultyPercent());
     }
 
     Vector3 RandomPosition() 
@@ -95,4 +100,7 @@ public class SpawnEnemy : MonoBehaviour
     }
 
 
+    float GetDifficultyPercent() {
+        return Mathf.Clamp01(Time.timeSinceLevelLoad / secondsToMaxDifficulty);
+    }
 }
