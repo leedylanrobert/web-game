@@ -154,7 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 8972363744189073354}
-  speed: 10
+  minSpeed: 10
+  maxSpeed: 20
+  secondsToMaxDifficulty: 60
   force: 3
 --- !u!114 &-8274392007037594249
 MonoBehaviour:
@@ -173,6 +175,7 @@ MonoBehaviour:
   enemy: {fileID: 8972363744189073357}
   tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
   spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}
+  secondsToMaxDifficulty: 60
 --- !u!95 &2167169387617560878
 Animator:
   serializedVersion: 4
