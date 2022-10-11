@@ -31,8 +31,6 @@ public class RandomPatrol : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         targetPosition = GetRandomPosition();
-        Debug.Log("target position: " + targetPosition);
-        Debug.Log("Current position: " + transform.position);
         SetDirection(targetPosition);
     }
 
