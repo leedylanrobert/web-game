@@ -23,6 +23,13 @@ public class Entry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+      Vector3 bottomLeftWorld = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
+      Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+
+      Debug.Log("World:");
+      Debug.Log(bottomLeftWorld);
+      Debug.Log(topRightWorld);
         int side = Random.Range(0,4);
         // int side guide: 0: up, 1: right, 2: down, 3: left
 
@@ -31,6 +38,8 @@ public class Entry : MonoBehaviour
         float xMax = (160f / 18f) -.4f;
 
         Vector2 countdownPosition;
+        RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
+        //float xMax = canvas.rect.width / 2;
 
         switch (side)
         {
