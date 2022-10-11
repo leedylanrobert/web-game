@@ -27,6 +27,8 @@ public class DamageController : MonoBehaviour
 
     public SpawnEnemy SpawnEnemy;
 
+    public float deltaTimeCounter = 1.5f;
+
     void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -42,28 +44,50 @@ public class DamageController : MonoBehaviour
 
         if (!isVulnerable)
         {
-            if (interval >= iFrameAmount)
+            if (deltaTimeCounter >= 1.5f)
             {
                 isVulnerable = true;
             }
             else
             {
-                int remainder = interval % 15;
-                int quotient = interval / 15;
-                if (remainder == 0)
-                {
-                    if (quotient % 2 == 0)
-                    {
+                switch(System.Math.Round(deltaTimeCounter, 2)){
+                    case 0:
                         sprite.color = Color.red;
-                    }
-                    else
-                    {
+                        break;
+                    case 0.25:
                         sprite.color = Color.white;
-                    }
+                        break;
+                    case 0.5:
+                        sprite.color = Color.red;
+                        break;
+                    case 0.75:
+                        sprite.color = Color.white;
+                        break;
+                    case 1:
+                        sprite.color = Color.red;
+                        break;
+                    case 1.25:
+                        sprite.color = Color.white;
+                        break;
                 }
+                // double remainder = deltaTimeCounter % 0.25;
+                // double quotient = deltaTimeCounter / 0.25;
+                // if (remainder == 0)
+                // {
+                //     if (quotient % 2 == 0)
+                //     {
+                //         sprite.color = Color.red;
+                //         Debug.Log("delatime" + deltaTimeCounter);
+                //     }
+                //     else
+                //     {
+                //         sprite.color = Color.white;
+                //     }
+                // }
             }
         }
-        interval += 1;
+        deltaTimeCounter += Time.deltaTime;
+        Debug.Log(deltaTimeCounter);
     }
     
     private void Damage()
@@ -87,9 +111,9 @@ public class DamageController : MonoBehaviour
     }
 
     private void Collision() {
-        if (interval >= iFrameAmount) {
+        if (deltaTimeCounter >= 1.5f) {
             Damage();
-            interval = 0;
+            deltaTimeCounter = 0f;
         }
     }
 
