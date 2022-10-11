@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 223137646}
   - component: {fileID: 223137648}
   - component: {fileID: 223137649}
+  - component: {fileID: 223137650}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Spider
@@ -510,6 +511,18 @@ MonoBehaviour:
   sprite: {fileID: 223137638}
   spiderCollider: {fileID: 223137642}
   SpawnEnemy: {fileID: 588836087}
+--- !u!114 &223137650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223137637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab41d19ced771234ab84cb3d6cb6f1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &475972284
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +717,7 @@ MonoBehaviour:
   bee: {fileID: 1379638258938177318, guid: 9f0f8aa0eccfb854f902e7b220f87416, type: 3}
   dragonfly: {fileID: 8972363744189073367, guid: 381419d9e8688d646b4af71a7266bd2e, type: 3}
   interval: 250
+  deltaTimeCounter: 5
 --- !u!4 &588836088
 Transform:
   m_ObjectHideFlags: 0
