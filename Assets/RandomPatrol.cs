@@ -23,6 +23,7 @@ public class RandomPatrol : MonoBehaviour
     public Entry entry;
     private bool startMoving = false;
     private int direction;
+    // int direction guide: 0: down, 1: up, 2: left, 3: right
     private Animator anim;
 
     // Start is called before the first frame update
@@ -30,7 +31,9 @@ public class RandomPatrol : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         targetPosition = GetRandomPosition();
-        direction = 0;
+        Debug.Log("target position: " + targetPosition);
+        Debug.Log("Current position: " + transform.position);
+        SetDirection(targetPosition);
     }
 
     // Update is called once per frame
@@ -66,10 +69,12 @@ public class RandomPatrol : MonoBehaviour
             {
                 if (xdiff >= 0)
                 {
+                    Debug.Log("Direction Left");
                     direction = 2;
                 }
                 else
                 {
+                    Debug.Log("Direction Right");
                     direction = 3;
                 }
             }
@@ -77,10 +82,12 @@ public class RandomPatrol : MonoBehaviour
             {
                 if (ydiff >= 0)
                 {
+                    Debug.Log("Direction Down");
                     direction = 0;
                 }
                 else
                 {
+                    Debug.Log("Direction Up");
                     direction = 1;
                 }
             }

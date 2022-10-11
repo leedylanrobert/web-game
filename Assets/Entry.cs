@@ -24,13 +24,12 @@ public class Entry : MonoBehaviour
     void Start()
     {
         Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-      Vector3 bottomLeftWorld = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
-      Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+        Vector3 bottomLeftWorld = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
+        Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
 
-      Debug.Log("World:");
-      Debug.Log(bottomLeftWorld);
-      Debug.Log(topRightWorld);
-        int side = Random.Range(0,4);
+        Debug.Log(bottomLeftWorld);
+        Debug.Log(topRightWorld);
+        int side = Random.Range(1,4);
         // int side guide: 0: up, 1: right, 2: down, 3: left
 
         float newX = 0f;
