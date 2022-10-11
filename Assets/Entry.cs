@@ -17,7 +17,7 @@ public class Entry : MonoBehaviour
 
     public AudioClip tick;
     public AudioClip spawn;
-    float volume = 1;
+    float volume = 0.75f;
     private int playedTimes = 1;
 
     private float xMax;
@@ -26,6 +26,10 @@ public class Entry : MonoBehaviour
     public float secondsToMaxDifficulty;
     private float tickInterval = 4f;
     private float baseTickInterval = 4f;
+
+    private Vector2 soundPosition = new Vector2(0f, 0f);
+
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -42,27 +46,25 @@ public class Entry : MonoBehaviour
         Vector3 position = transform.position;
         Vector3 countdownPosition;
 
-        Debug.Log("Entry Position: " + position);
-
         if (position.y > yMax) 
         {
             // Up
-            countdownPosition = new Vector3(position.x, position.y - .6f, 1);
+            countdownPosition = new Vector3(position.x, position.y - 0.8f, 1);
         }
         else if (position.x > xMax)
         {
             // Right
-            countdownPosition = new Vector3(position.x - 1.2f, 1);
+            countdownPosition = new Vector3(position.x - 1.4f, 1);
         }
         else if (position.y < -yMax)
         {
             // Down
-            countdownPosition = new Vector3(position.x, position.y + 1.3f);
+            countdownPosition = new Vector3(position.x, position.y + 1.5f);
         }
         else
         {
             // Left
-            countdownPosition = new Vector3(position.x + .8f, 1);
+            countdownPosition = new Vector3(position.x + 1.0f, position.y);
         }
 
         Transform parent = GameObject.Find("Canvas").transform;
@@ -80,7 +82,8 @@ public class Entry : MonoBehaviour
 
         countdown.text = "3";
         selfText = Instantiate(countdown, countdownPosition, transform.rotation, parent);
-        AudioSource.PlayClipAtPoint(tick, transform.position, volume);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(tick, volume);
     }
 
     // Update is called once per frame
@@ -94,35 +97,31 @@ public class Entry : MonoBehaviour
         {
             isSpawned = true;
             selfText.text = "!";
-            countdown.color = Color.white;
             if (playedTimes < 4)
             {
-                AudioSource.PlayClipAtPoint(spawn, transform.position, volume);
+                audioSource.PlayOneShot(spawn, volume);
                 playedTimes++;
             }
         }
         else if (timeElapsed > (tickInterval / 2f))
         {
             selfText.text = "1";
-            countdown.color = enemy.color;
             if (playedTimes < 3)
             {
-                AudioSource.PlayClipAtPoint(tick, transform.position, volume);
+                audioSource.PlayOneShot(tick, volume);
                 playedTimes++;
             }
         }
         else if (timeElapsed > (tickInterval / 4f))
         {
             selfText.text = "2";
-            countdown.color = Color.white;
             if (playedTimes < 2)
             {
-                AudioSource.PlayClipAtPoint(tick, transform.position, volume);
+                audioSource.PlayOneShot(tick, volume);
                 playedTimes++;
             }
         }
-        tickInterval = baseTickInterval - ((baseTickInterval / 2f) * GetDifficultyPercent());
-        Debug.Log("GetDifficultyPercent: " + GetDifficultyPercent());
+        tickInterval = baseTickInterval - ((baseTickInterval * (2f / 3f)) * GetDifficultyPercent());
         timeElapsed += Time.deltaTime;
     }
 

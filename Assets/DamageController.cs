@@ -11,9 +11,6 @@ public class DamageController : MonoBehaviour
 
     private FollowTouch spider;
 
-    private int interval = 90;
-    private int iFrameAmount = 90;
-
     public GameObject restartPanel;
 
     public AudioClip loss;
@@ -28,6 +25,13 @@ public class DamageController : MonoBehaviour
     public SpawnEnemy SpawnEnemy;
 
     public float deltaTimeCounter = 1.5f;
+
+    AudioSource backgroundMusic;
+
+    void Start()
+    {
+        backgroundMusic = GameObject.FindGameObjectWithTag("Background Music").GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -87,13 +91,13 @@ public class DamageController : MonoBehaviour
             }
         }
         deltaTimeCounter += Time.deltaTime;
-        Debug.Log(deltaTimeCounter);
     }
     
     private void Damage()
     {
         if (_healthController.playerHealth > 1)
         {
+
             AudioSource.PlayClipAtPoint(damage, transform.position, volume);
             isVulnerable = false;
 
@@ -102,6 +106,7 @@ public class DamageController : MonoBehaviour
         }
         else if (_healthController.playerHealth == 1)
         {
+            backgroundMusic.Pause();
             AudioSource.PlayClipAtPoint(loss, transform.position, volume);
 
             Purge();

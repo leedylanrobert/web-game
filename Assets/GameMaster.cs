@@ -16,4 +16,10 @@ public class GameMaster : MonoBehaviour
     public void GoToMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void QuitGame() {
+        Debug.Log("quit");
+        Application.Quit();
+    }
+
 }

@@ -52,7 +52,7 @@ public class SpawnEnemy : MonoBehaviour
             }
         }
         
-        deltaTimeInterval = 6.0f - (3.0f * GetDifficultyPercent());
+        deltaTimeInterval = 6.0f - (4.0f * GetDifficultyPercent());
     }
 
     Vector3 RandomPosition() 
@@ -70,26 +70,30 @@ public class SpawnEnemy : MonoBehaviour
         {
             case 0:
                 // Up
-                newX = Random.Range(-xMax + 0.6f, xMax - 0.6f);
-                newY = yMax + 0.6f;
+                float[] xVals = new float[]{Random.Range(-xMax + (xMax / 2.8f), -xMax / 3f), Random.Range(xMax / 3f, xMax - 0.6f)};
+                // float[] xVals = new float[]{-xMax + (xMax / 2.8f), xMax / 3f};
+                // newX = Random.Range(-xMax + 0.6f, xMax - 0.6f);
+                newX = xVals[Random.Range(0, 2)];
+
+                newY = yMax + 0.8f;
                 position = new Vector2(newX,newY);
                 break;
             case 1:
                 // Right
-                newX = xMax + 0.6f;
-                newY = Random.Range(-yMax + 0.6f, yMax - 0.6f);
+                newX = xMax + 0.8f;
+                newY = Random.Range(-yMax + 1.2f, yMax - 1.2f);
                 position = new Vector2(newX, newY);
                 break;
             case 2:
                 // Down
-                newX = Random.Range(-xMax + 0.6f, xMax - 0.6f);
-                newY = -yMax - 0.6f;
+                newX = Random.Range(-xMax + 1.2f, xMax - 1.2f);
+                newY = -yMax - 0.8f;
                 position = new Vector2(newX, newY);
                 break;
             case 3: 
                 // Left
-                newX = -xMax - 0.6f;
-                newY = Random.Range(-yMax + 0.6f, yMax - 0.6f);
+                newX = -xMax - 0.8f;
+                newY = Random.Range(-yMax + 1.2f, yMax - 1.2f);
                 position = new Vector2(newX, newY);
                 break;
             default:

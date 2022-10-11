@@ -67,12 +67,10 @@ public class RandomPatrol : MonoBehaviour
             {
                 if (xdiff >= 0)
                 {
-                    Debug.Log("Direction Left");
                     direction = 2;
                 }
                 else
                 {
-                    Debug.Log("Direction Right");
                     direction = 3;
                 }
             }
@@ -80,12 +78,10 @@ public class RandomPatrol : MonoBehaviour
             {
                 if (ydiff >= 0)
                 {
-                    Debug.Log("Direction Down");
                     direction = 0;
                 }
                 else
                 {
-                    Debug.Log("Direction Up");
                     direction = 1;
                 }
             }
