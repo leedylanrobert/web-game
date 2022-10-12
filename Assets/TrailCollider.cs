@@ -32,7 +32,11 @@ public class TrailCollider : MonoBehaviour
 
     void Update()
     {
-        UpdateCollider();
+        if (Input.GetKey(KeyCode.Space)){
+            UpdateCollider();
+        }else{
+            _tr.Clear();
+        }
     }
     void UpdateCollider()
     {
