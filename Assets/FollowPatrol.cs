@@ -35,7 +35,7 @@ public class FollowPatrol : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         targetPosition = GameObject.Find("Spider").transform.position;
-        direction = 0;
+        SetDirection(targetPosition);
     }
 
     // Update is called once per frame
@@ -63,27 +63,27 @@ public class FollowPatrol : MonoBehaviour
         float ydiff = currentPosition.y - targetPosition.y;
 
         if (Mathf.Abs(xdiff) >= Mathf.Abs(ydiff)) 
+        {
+            if (xdiff >= 0)
             {
-                if (xdiff >= 0)
-                {
-                    direction = 2;
-                }
-                else
-                {
-                    direction = 3;
-                }
+                direction = 2;
             }
             else
             {
-                if (ydiff >= 0)
-                {
-                    direction = 0;
-                }
-                else
-                {
-                    direction = 1;
-                }
+                direction = 3;
             }
+        }
+        else
+        {
+            if (ydiff >= 0)
+            {
+                direction = 0;
+            }
+            else
+            {
+                direction = 1;
+            }
+        }
 
         anim.SetInteger("direction", direction);
     }

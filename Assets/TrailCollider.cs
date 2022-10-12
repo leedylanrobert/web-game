@@ -19,19 +19,27 @@ public class TrailCollider : MonoBehaviour
 
     public AudioClip splat;
     public AudioClip ding;
-    float volume = 500f;
+    float volume = 0.5f;
 
     bool crossed = false;
 
-
+    AudioSource audioSource;
+    public FollowTouch followTouch;
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        UpdateCollider();
+        if (Input.GetKey(KeyCode.Space)){
+            followTouch.deploying = true;
+            UpdateCollider();
+        }else{
+            _tr.Clear();
+            followTouch.deploying = false;
+        }
     }
     void UpdateCollider()
     {
@@ -81,7 +89,8 @@ public class TrailCollider : MonoBehaviour
 
                             Vector2[] finalLoop = CreateLoopArray(rawLoop, i - 1);
                             bool[] killEnemies = IsInsideWeb(enemies, finalLoop);
-                            AudioSource.PlayClipAtPoint(splat, transform.position, volume);
+                            // AudioSource.PlayClipAtPoint(splat, transform.position, volume);
+                            audioSource.PlayOneShot(splat, volume);
                             KillEnemies(enemies, killEnemies);
 
                             crossed = false;
@@ -101,7 +110,8 @@ public class TrailCollider : MonoBehaviour
             {
                 Destroy(enemies[i]);
                 ScoreManager.instance.AddPoint();
-                AudioSource.PlayClipAtPoint(ding, transform.position, volume);
+                // AudioSource.PlayClipAtPoint(ding, transform.position, volume);
+                audioSource.PlayOneShot(ding, volume);
             }
         }
     }

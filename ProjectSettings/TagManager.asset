@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - Countdown
   - Hearts
+  - Canvas
+  - Background Music
+  - Pause Menu
   layers:
   - Default
   - TransparentFX

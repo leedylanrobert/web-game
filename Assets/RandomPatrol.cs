@@ -23,6 +23,7 @@ public class RandomPatrol : MonoBehaviour
     public Entry entry;
     private bool startMoving = false;
     private int direction;
+    // int direction guide: 0: down, 1: up, 2: left, 3: right
     private Animator anim;
 
     // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class RandomPatrol : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         targetPosition = GetRandomPosition();
-        direction = 0;
+        SetDirection(targetPosition);
     }
 
     // Update is called once per frame

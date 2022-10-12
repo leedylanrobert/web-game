@@ -11,9 +11,6 @@ public class DamageController : MonoBehaviour
 
     private FollowTouch spider;
 
-    private int interval = 90;
-    private int iFrameAmount = 90;
-
     public GameObject restartPanel;
 
     public AudioClip loss;
@@ -26,6 +23,15 @@ public class DamageController : MonoBehaviour
     public Collider2D spiderCollider;
 
     public SpawnEnemy SpawnEnemy;
+
+    public float deltaTimeCounter = 1.5f;
+
+    AudioSource backgroundMusic;
+
+    void Start()
+    {
+        backgroundMusic = GameObject.FindGameObjectWithTag("Background Music").GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -42,34 +48,42 @@ public class DamageController : MonoBehaviour
 
         if (!isVulnerable)
         {
-            if (interval >= iFrameAmount)
+            if (deltaTimeCounter >= 1.5f)
             {
                 isVulnerable = true;
             }
             else
             {
-                int remainder = interval % 15;
-                int quotient = interval / 15;
-                if (remainder == 0)
-                {
-                    if (quotient % 2 == 0)
-                    {
-                        sprite.color = Color.red;
-                    }
-                    else
-                    {
-                        sprite.color = Color.white;
-                    }
+                double newDeltaTimeCounter = System.Math.Round(deltaTimeCounter, 2);
+                if ((newDeltaTimeCounter > 0 & newDeltaTimeCounter <= 0.25) | (newDeltaTimeCounter > 0.5 & newDeltaTimeCounter <= 0.75) | (newDeltaTimeCounter > 1.0 & newDeltaTimeCounter <= 1.25)){
+                    sprite.color = Color.red;
+                } else if ((newDeltaTimeCounter > 0.25 & newDeltaTimeCounter <= 0.5) | (newDeltaTimeCounter > 0.75 & newDeltaTimeCounter <= 1.0) | (newDeltaTimeCounter > 1.25 & newDeltaTimeCounter <= 1.5)){
+                    sprite.color = Color.white;
                 }
+                // double remainder = deltaTimeCounter % 0.25;
+                // double quotient = deltaTimeCounter / 0.25;
+                // if (remainder == 0)
+                // {
+                //     if (quotient % 2 == 0)
+                //     {
+                //         sprite.color = Color.red;
+                //         Debug.Log("delatime" + deltaTimeCounter);
+                //     }
+                //     else
+                //     {
+                //         sprite.color = Color.white;
+                //     }
+                // }
             }
         }
-        interval += 1;
+        deltaTimeCounter += Time.deltaTime;
     }
     
     private void Damage()
     {
         if (_healthController.playerHealth > 1)
         {
+
             AudioSource.PlayClipAtPoint(damage, transform.position, volume);
             isVulnerable = false;
 
@@ -78,6 +92,7 @@ public class DamageController : MonoBehaviour
         }
         else if (_healthController.playerHealth == 1)
         {
+            backgroundMusic.Pause();
             AudioSource.PlayClipAtPoint(loss, transform.position, volume);
 
             Purge();
@@ -87,9 +102,9 @@ public class DamageController : MonoBehaviour
     }
 
     private void Collision() {
-        if (interval >= iFrameAmount) {
+        if (deltaTimeCounter >= 1.5f) {
             Damage();
-            interval = 0;
+            deltaTimeCounter = 0f;
         }
     }
 
