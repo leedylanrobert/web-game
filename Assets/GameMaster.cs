@@ -9,11 +9,13 @@ public class GameMaster : MonoBehaviour
     private AudioSource backgroundMusic;
     private AudioSource audioSource;
     public AudioClip pause;
+    public GameObject pausePanel;
 
     void Start()
     {
         backgroundMusic = GameObject.FindGameObjectWithTag("Background Music").GetComponent<AudioSource>();
         audioSource = GetComponent<AudioSource>();
+        //pausePanel = GameObject.FindGameObjectWithTag("Pause Menu");
     }
 
     void Update() {
@@ -28,12 +30,14 @@ public class GameMaster : MonoBehaviour
             Debug.Log("Is Paused? " + isPaused);
             if (!isPaused)
             {
+                pausePanel.SetActive(true);
                 backgroundMusic.Pause();
                 audioSource.PlayOneShot(pause, 0.75f);
                 Time.timeScale = 0;
             }
             else
             {
+                pausePanel.SetActive(false);
                 Time.timeScale = 1;
                 backgroundMusic.UnPause();
             }
@@ -41,12 +45,36 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    
+
+    public void UnPause() {
+        //pausePanel = GameObject.FindGameObjectWithTag("Pause Menu");
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
+        backgroundMusic.UnPause();
+        isPaused = !isPaused;
+    }
+
+    //Use for physical pause button
+    // public void Pause(){
+    //     pausePanel = GameObject.FindGameObjectWithTag("Pause Menu");
+    //     if (SceneManager.GetActiveScene().name == "Game"){
+    //     pausePanel.SetActive(true);
+    //     backgroundMusic.Pause();
+    //     audioSource.PlayOneShot(pause, 0.75f);
+    //     Time.timeScale = 0;
+    //     isPaused = !isPaused;
+    //     }
+    // }
+
     public void GoToGameScene() {
         SceneManager.LoadScene("Game");
     }
 
     public void Restart() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+        isPaused = false;
     }
 
     public void GoToMainMenu() {
