@@ -24,6 +24,7 @@ public class TrailCollider : MonoBehaviour
     bool crossed = false;
 
     AudioSource audioSource;
+    public FollowTouch followTouch;
 
     void Awake()
     {
@@ -33,9 +34,11 @@ public class TrailCollider : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.Space)){
+            followTouch.deploying = true;
             UpdateCollider();
         }else{
             _tr.Clear();
+            followTouch.deploying = false;
         }
     }
     void UpdateCollider()

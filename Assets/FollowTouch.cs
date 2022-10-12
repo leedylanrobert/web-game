@@ -22,6 +22,8 @@ public class FollowTouch : MonoBehaviour
 
     private Animator anim;
     private int direction;
+
+    public bool deploying = false;
     // int direction guide: 0: down, 1: up, 2: left, 3: right
 
     // Start is called before the first frame update
@@ -31,12 +33,17 @@ public class FollowTouch : MonoBehaviour
         direction = 0;
     }
 
-    private int speed = 10;
+    private int speed = 12;
      
     public void Move()
     {
         Vector3 Movement = new Vector3 (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        transform.position += Movement * speed * Time.deltaTime;
+        float speedMultiplier = 1f;
+        if (deploying)
+        {
+            speedMultiplier = .65f;
+        }
+        transform.position += Movement * (speed * speedMultiplier) * Time.deltaTime;
         if (Movement.x == 0 & Movement.y == 0){
             anim.SetBool("moving", false);
         }else{
@@ -52,6 +59,7 @@ public class FollowTouch : MonoBehaviour
             direction = 1;
         }
         anim.SetInteger("direction", direction);
+        // speed = Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
     }
 
     // Update is called once per frame
