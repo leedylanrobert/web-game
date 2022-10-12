@@ -336,6 +336,7 @@ MonoBehaviour:
   maxSpeed: 10
   secondsToMaxDifficulty: 60
   collided: 0
+  deploying: 0
 --- !u!96 &223137645
 TrailRenderer:
   serializedVersion: 2
@@ -450,6 +451,7 @@ MonoBehaviour:
   _tr: {fileID: 223137645}
   splat: {fileID: 8300000, guid: 876d7a5209950fe49ac27a1fce1af899, type: 3}
   ding: {fileID: 8300000, guid: b37ce83795e43ee469b6784b6e65df05, type: 3}
+  followTouch: {fileID: 223137644}
 --- !u!68 &223137647
 EdgeCollider2D:
   m_ObjectHideFlags: 0

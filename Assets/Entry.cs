@@ -54,7 +54,7 @@ public class Entry : MonoBehaviour
         else if (position.x > xMax)
         {
             // Right
-            countdownPosition = new Vector3(position.x - 1.4f, 1);
+            countdownPosition = new Vector3(position.x - 1.4f, position.y);
         }
         else if (position.y < -yMax)
         {
