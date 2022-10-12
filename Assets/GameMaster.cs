@@ -13,7 +13,6 @@ public class GameMaster : MonoBehaviour
 
     void Start()
     {
-        backgroundMusic = GameObject.FindGameObjectWithTag("Background Music").GetComponent<AudioSource>();
         audioSource = GetComponent<AudioSource>();
         //pausePanel = GameObject.FindGameObjectWithTag("Pause Menu");
     }
@@ -27,6 +26,7 @@ public class GameMaster : MonoBehaviour
         }
         if (sceneName == "Game" & (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)))
         {
+            backgroundMusic = GameObject.FindGameObjectWithTag("Background Music").GetComponent<AudioSource>();
             Debug.Log("Is Paused? " + isPaused);
             if (!isPaused)
             {
@@ -69,6 +69,8 @@ public class GameMaster : MonoBehaviour
 
     public void GoToGameScene() {
         SceneManager.LoadScene("Game");
+        Time.timeScale = 1;
+        isPaused = false;
     }
 
     public void Restart() {
