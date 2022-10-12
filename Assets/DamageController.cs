@@ -54,25 +54,11 @@ public class DamageController : MonoBehaviour
             }
             else
             {
-                switch(System.Math.Round(deltaTimeCounter, 2)){
-                    case 0:
-                        sprite.color = Color.red;
-                        break;
-                    case 0.25:
-                        sprite.color = Color.white;
-                        break;
-                    case 0.5:
-                        sprite.color = Color.red;
-                        break;
-                    case 0.75:
-                        sprite.color = Color.white;
-                        break;
-                    case 1:
-                        sprite.color = Color.red;
-                        break;
-                    case 1.25:
-                        sprite.color = Color.white;
-                        break;
+                double newDeltaTimeCounter = System.Math.Round(deltaTimeCounter, 2);
+                if ((newDeltaTimeCounter > 0 & newDeltaTimeCounter <= 0.25) | (newDeltaTimeCounter > 0.5 & newDeltaTimeCounter <= 0.75) | (newDeltaTimeCounter > 1.0 & newDeltaTimeCounter <= 1.25)){
+                    sprite.color = Color.red;
+                } else if ((newDeltaTimeCounter > 0.25 & newDeltaTimeCounter <= 0.5) | (newDeltaTimeCounter > 0.75 & newDeltaTimeCounter <= 1.0) | (newDeltaTimeCounter > 1.25 & newDeltaTimeCounter <= 1.5)){
+                    sprite.color = Color.white;
                 }
                 // double remainder = deltaTimeCounter % 0.25;
                 // double quotient = deltaTimeCounter / 0.25;
