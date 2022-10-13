@@ -10,6 +10,8 @@ public class GameMaster : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip pause;
     public GameObject pausePanel;
+    public TrailCollider trailCollider;
+    public FollowTouch followTouch;
 
     void Start()
     {
@@ -32,7 +34,7 @@ public class GameMaster : MonoBehaviour
         if (sceneName == "Game" & (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)))
         {
             backgroundMusic = GameObject.FindGameObjectWithTag("Background Music").GetComponent<AudioSource>();
-            Debug.Log("Is Paused? " + isPaused);
+
             if (!isPaused)
             {
                 pausePanel.SetActive(true);
@@ -47,6 +49,8 @@ public class GameMaster : MonoBehaviour
                 backgroundMusic.UnPause();
             }
             isPaused = !isPaused;
+            trailCollider.isPaused = !trailCollider.isPaused;
+            followTouch.isPaused = !followTouch.isPaused;
         }
     }
 
@@ -55,6 +59,8 @@ public class GameMaster : MonoBehaviour
         Time.timeScale = 1;
         backgroundMusic.UnPause();
         isPaused = !isPaused;
+        trailCollider.isPaused = !trailCollider.isPaused;
+        followTouch.isPaused = !followTouch.isPaused;
     }
 
     //Use for physical pause button
@@ -74,12 +80,16 @@ public class GameMaster : MonoBehaviour
         SceneManager.LoadScene("Game");
         Time.timeScale = 1;
         isPaused = false;
+        trailCollider.isPaused = !trailCollider.isPaused;
+        followTouch.isPaused = !followTouch.isPaused;
     }
 
     public void Restart() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
         isPaused = false;
+        trailCollider.isPaused = !trailCollider.isPaused;
+        followTouch.isPaused = !followTouch.isPaused;
     }
 
     public void GoToMainMenu() {

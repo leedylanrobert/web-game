@@ -26,6 +26,8 @@ public class TrailCollider : MonoBehaviour
     AudioSource audioSource;
     public FollowTouch followTouch;
 
+    public bool isPaused = false;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -36,7 +38,7 @@ public class TrailCollider : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)){
             followTouch.deploying = true;
             UpdateCollider();
-        }else{
+        }else if (!isPaused) {
             _tr.Clear();
             followTouch.deploying = false;
         }

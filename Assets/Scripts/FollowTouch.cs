@@ -9,6 +9,8 @@ public class FollowTouch : MonoBehaviour
     private Animator anim;
     private int direction;
 
+    public bool isPaused = false;
+
     public bool deploying = false;
     // int direction guide: 0: down, 1: up, 2: left, 3: right
 
@@ -33,14 +35,17 @@ public class FollowTouch : MonoBehaviour
         }else{
             anim.SetBool("moving", true);
         }
-        if (Movement.x < 0 & Mathf.Abs(Movement.x) > Mathf.Abs(Movement.y)){
-            direction = 2;
-        }else if (Movement.x > 0 & Mathf.Abs(Movement.x) > Mathf.Abs(Movement.y)){
-            direction = 3;
-        }else if (Movement.y < 0 & Mathf.Abs(Movement.y) > Mathf.Abs(Movement.x)){
-            direction = 0;
-        }else if (Movement.y > 0 & Mathf.Abs(Movement.y) > Mathf.Abs(Movement.x)){
-            direction = 1;
+        if (!isPaused)
+        {
+            if (Movement.x < 0 & Mathf.Abs(Movement.x) > Mathf.Abs(Movement.y)){
+                direction = 2;
+            }else if (Movement.x > 0 & Mathf.Abs(Movement.x) > Mathf.Abs(Movement.y)){
+                direction = 3;
+            }else if (Movement.y < 0 & Mathf.Abs(Movement.y) > Mathf.Abs(Movement.x)){
+                direction = 0;
+            }else if (Movement.y > 0 & Mathf.Abs(Movement.y) > Mathf.Abs(Movement.x)){
+                direction = 1;
+            }
         }
         anim.SetInteger("direction", direction);
     }
