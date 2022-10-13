@@ -61,7 +61,7 @@ public class SpawnEnemy : MonoBehaviour
 
     Vector3 RandomPosition() 
     {
-        int side = Random.Range(1,2);
+        int side = Random.Range(0,4);
         // int side guide: 0: up, 1: right, 2: down, 3: left
 
         float newX = 0f;
