@@ -4,7 +4,9 @@ Spider quest is an arcade-style game coded in Unity where you play as a spider t
 
 Every enemy has a unique movement pattern that will force the player to make quick decisions on the fly. Be aware that the pace of the game accelerates the longer you survive. Good luck webbing!
 
-Click [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/leedylanrobert/web-game/blob/master/SpiderQuest.exe) to download the .exe file and play!
+# Setup
+
+Download the .zip [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/leedylanrobert/web-game/blob/master/SpiderQuest.exe). Unzip the contents and click on SpiderQuest.exe to begin!
 
 # Controls
 
