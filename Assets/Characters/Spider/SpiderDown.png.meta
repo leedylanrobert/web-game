@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,11 +112,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_0
+      name: SpiderDown_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,104 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b86d581d6616b764dba483a822dda997
-      internalID: 1867251690
+      spriteID: 42ba317eaa922df49b983b455bf3287a
+      internalID: 2145543014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_1
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 0
-        width: 66
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 416dcda7aab11b54ca0518891e1035d4
-      internalID: -186372653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_2
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 0
-        width: 66
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ad0b3babdd3787479966db355aaaa58
-      internalID: -861968256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_3
-      rect:
-        serializedVersion: 2
-        x: 198
-        y: 0
-        width: 66
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d25b69c1ad5a3342880656b1b31bd73
-      internalID: -765496099
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_4
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 0
-        width: 66
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f665017ee24417d4483e2da2f8d58eb5
-      internalID: -1330627386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_5
+      name: SpiderDown_1
       rect:
         serializedVersion: 2
         x: 330
-        y: 0
+        y: 2
         width: 66
-        height: 64
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 636496dcdc9037042b8cc8b9ecf28b07
-      internalID: -1312603409
+      spriteID: d8bf934e6a3829340941c7c76fe186bb
+      internalID: 826588865
       vertices: []
       indices: 
       edges: []
@@ -252,12 +180,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      334921164_1261965247783337_8431499083989147475_n_0: 1867251690
-      334921164_1261965247783337_8431499083989147475_n_5: -1312603409
-      334921164_1261965247783337_8431499083989147475_n_1: -186372653
-      334921164_1261965247783337_8431499083989147475_n_4: -1330627386
-      334921164_1261965247783337_8431499083989147475_n_2: -861968256
-      334921164_1261965247783337_8431499083989147475_n_3: -765496099
+      SpiderDown_0: 2145543014
+      SpiderDown_1: 826588865
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
