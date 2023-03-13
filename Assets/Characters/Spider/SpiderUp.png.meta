@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: d17f9f24ed908384a88a24a67c3ae8c9
+guid: 58aa78f80896a274ead65aab23140ae2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -102,6 +101,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -117,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_0
+      name: SpiderUp_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b86d581d6616b764dba483a822dda997
-      internalID: 1867251690
+      spriteID: 80cfea75002d1b7448fd7848926b2cac
+      internalID: 114081397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_1
+      name: SpiderUp_1
       rect:
         serializedVersion: 2
         x: 66
@@ -152,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 416dcda7aab11b54ca0518891e1035d4
-      internalID: -186372653
+      spriteID: 6a991e013299ed246ad7c1b3062221e9
+      internalID: 673427043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_2
+      name: SpiderUp_2
       rect:
         serializedVersion: 2
         x: 132
@@ -173,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ad0b3babdd3787479966db355aaaa58
-      internalID: -861968256
+      spriteID: 76fb0ef3eac221640b1c05b75b4c085b
+      internalID: 1817184920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_3
+      name: SpiderUp_3
       rect:
         serializedVersion: 2
         x: 198
@@ -194,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d25b69c1ad5a3342880656b1b31bd73
-      internalID: -765496099
+      spriteID: 65200b7988d93d3419fc5c3900be32e4
+      internalID: -413730941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_4
+      name: SpiderUp_4
       rect:
         serializedVersion: 2
         x: 264
@@ -215,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f665017ee24417d4483e2da2f8d58eb5
-      internalID: -1330627386
+      spriteID: 77461abc0449ba04db8356d676f7bcc4
+      internalID: -1743991379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 334921164_1261965247783337_8431499083989147475_n_5
+      name: SpiderUp_5
       rect:
         serializedVersion: 2
         x: 330
@@ -236,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 636496dcdc9037042b8cc8b9ecf28b07
-      internalID: -1312603409
+      spriteID: 8a4d71d48265daa4fb5609099ce43123
+      internalID: 1681922906
       vertices: []
       indices: 
       edges: []
@@ -253,12 +264,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      334921164_1261965247783337_8431499083989147475_n_0: 1867251690
-      334921164_1261965247783337_8431499083989147475_n_5: -1312603409
-      334921164_1261965247783337_8431499083989147475_n_1: -186372653
-      334921164_1261965247783337_8431499083989147475_n_4: -1330627386
-      334921164_1261965247783337_8431499083989147475_n_2: -861968256
-      334921164_1261965247783337_8431499083989147475_n_3: -765496099
+      SpiderUp_2: 1817184920
+      SpiderUp_3: -413730941
+      SpiderUp_5: 1681922906
+      SpiderUp_0: 114081397
+      SpiderUp_1: 673427043
+      SpiderUp_4: -1743991379
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
