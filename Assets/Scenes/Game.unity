@@ -381,7 +381,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.15534163
+        value: 0.24867192
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -395,7 +395,7 @@ TrailRenderer:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -411,7 +411,7 @@ TrailRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -423,7 +423,7 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -446,6 +446,23 @@ MonoBehaviour:
   ding: {fileID: 8300000, guid: b37ce83795e43ee469b6784b6e65df05, type: 3}
   followTouch: {fileID: 223137644}
   isPaused: 0
+  webInterval: 2
+  webCount: 0
+  webPixel: {fileID: 8945036032942207388, guid: ced2790ef4969a44fa9dcbb4f121901d, type: 3}
+  testPixel: {fileID: 0}
+  webRenderer: {fileID: 2202313282762778652, guid: ced2790ef4969a44fa9dcbb4f121901d, type: 3}
+  pixelSize: 0
+  pixelScale: 0.1
+  lastPixel: {x: 0, y: 0, z: 0}
+  outerTop: 0
+  outerBottom: 0
+  outerLeft: 0
+  outerRight: 0
+  innerTop: 0
+  innerBottom: 0
+  innerLeft: 0
+  innerRight: 0
+  updateCount: 0
 --- !u!68 &223137647
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2251,7 +2268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1241903785
 AudioSource:
   m_ObjectHideFlags: 0

@@ -12,7 +12,6 @@ public class TrailCollider : MonoBehaviour
 {
     public TrailRenderer _tr; //assign the trailrenderer in editor.
 
-    // Dylan Code
     Vector2 prevPoint;
     Vector2 currPoint;
     private int[] triangles;
@@ -28,17 +27,53 @@ public class TrailCollider : MonoBehaviour
 
     public bool isPaused = false;
 
+    // Web Gen Code
+    public float webInterval = 2.0f;
+    public float webCount = 0f;
+    public GameObject webPixel;
+    public GameObject testPixel;
+    public SpriteRenderer webRenderer;
+    public float pixelSize;
+    public float pixelScale = .1f;
+    public Vector3 lastPixel = new Vector3(0f, 0f);
+
+    public float outerTop;
+    public float outerBottom;
+    public float outerLeft;
+    public float outerRight;
+
+    public float innerTop;
+    public float innerBottom;
+    public float innerLeft;
+    public float innerRight;
+
+    public int updateCount = 0;
+
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        pixelSize = webRenderer.size.x;
+        SetBounds();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)){
+        updateCount++;
+
+        Vector3 currPosition = transform.position;
+        if (currPosition.x <= outerLeft | currPosition.x >= outerRight | currPosition.y <= outerBottom | currPosition.y >= outerTop)
+        {
+            Debug.Log("New pixel");
+            PlacePixels();
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
             followTouch.deploying = true;
             UpdateCollider();
-        }else if (!isPaused) {
+        }
+        else if (!isPaused) {
             _tr.Clear();
             followTouch.deploying = false;
         }
@@ -190,6 +225,92 @@ public class TrailCollider : MonoBehaviour
         return uniquePoints;
     }
 
+    void PlacePixels()
+    {
+        float xDiff = transform.position.x - lastPixel.x;
+        float yDiff = transform.position.y - lastPixel.y;
+
+        float xRemainder = xDiff % 1;
+        float yRemainder = yDiff % 1;
+
+        int xCoord = (int)Math.Round(xDiff / pixelScale, 0);
+        int yCoord = (int)Math.Round(yDiff / pixelScale, 0);
+
+        List<Vector2> bresenhamPixels = BresenhamPixels(xCoord, yCoord);
+        
+        if (xRemainder > .5f | yRemainder > .5f)
+        {
+            bresenhamPixels.RemoveAt(bresenhamPixels.Count - 1);
+        }
+
+        foreach (var bresenhamPixel in bresenhamPixels)
+        {
+            Vector3 newPixel = new Vector3(lastPixel.x + (bresenhamPixel.x * pixelScale), lastPixel.y + (bresenhamPixel.y * pixelScale));
+            Instantiate(webPixel, newPixel, transform.rotation);
+        }
+
+        Vector3 lastBresenham = bresenhamPixels.Last();
+        lastPixel = new Vector3(lastPixel.x + (lastBresenham.x * pixelScale), lastPixel.y + (lastBresenham.y * pixelScale));
+
+        SetBounds();
+
+
+    }
+
+    void SetBounds()
+    {
+        outerTop = lastPixel.y + (pixelSize * pixelScale);
+        outerBottom = lastPixel.y - (pixelSize * pixelScale);
+        outerLeft = lastPixel.x - (pixelSize * pixelScale);
+        outerRight = lastPixel.x + (pixelSize * pixelScale);
+
+        innerTop = lastPixel.y + (pixelSize * (pixelScale / 2));
+        innerBottom = lastPixel.y - (pixelSize * (pixelScale / 2));
+        innerLeft = lastPixel.x - (pixelSize * (pixelScale / 2));
+        innerRight = lastPixel.x + (pixelSize * (pixelScale / 2));
+    }
+
+    List<Vector2> BresenhamPixels(int x1, int y1)
+    {
+
+        List<Vector2> bresenhamPixels = new List<Vector2>();
+
+        int x0 = 0;
+        int y0 = 0;
+
+        int dx = Math.Abs(x1);
+        int dy = -Math.Abs(y1);
+
+        int sx = x1 > 0 ? 1 : -1;
+        int sy = y1 > 0 ? 1 : -1;
+
+        int err = dx + dy;
+        int e2;
+
+        int failSafe = 0;
+
+        while ((x0 != x1 | y0 != y1) & failSafe < 100)
+        {
+            failSafe += 1;
+
+            e2 = 2 * err;
+
+            if (e2 >= dy)
+            {
+                err += dy;
+                x0 += sx;
+            }
+            if (e2 <= dx)
+            {
+                err += dx;
+                y0 += sy;
+            }
+            bresenhamPixels.Add(new Vector2(x0, y0));
+        }
+
+        return bresenhamPixels;
+    }
+
     bool IsColinear(Vector2 prevPoint, Vector2 currPoint, Vector2 nextPoint)
     {
         float minArea = 0.0000001f;
@@ -200,7 +321,8 @@ public class TrailCollider : MonoBehaviour
     Vector2[] ConvertArray(Vector3[] v3)
     {
         Vector2 [] v2 = new Vector2[v3.Length];
-        for(int i = 0; i <  v3.Length; i++){
+        for(int i = 0; i <  v3.Length; i++)
+        {
             Vector3 tempV3 = v3[i];
             v2[i] = new Vector2(tempV3.x, tempV3.y);
         }
