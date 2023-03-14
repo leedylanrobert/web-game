@@ -36,6 +36,12 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+
+        xMax = topRightWorld.x;
+        yMax = topRightWorld.y;
+
         Spawn();
         deltaTimeInterval = 6.0f - (4.0f * GetDifficultyPercent());
     }
