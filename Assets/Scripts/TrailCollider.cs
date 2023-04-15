@@ -36,11 +36,11 @@ public class TrailCollider : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.Space)){
-            followTouch.deploying = true;
+            // followTouch.deploying = true;
             UpdateCollider();
         }else if (!isPaused) {
             _tr.Clear();
-            followTouch.deploying = false;
+            // followTouch.deploying = false;
         }
     }
 

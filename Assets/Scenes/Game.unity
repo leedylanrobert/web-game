@@ -260,7 +260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223137637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2477, y: 0.2401, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -328,8 +328,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a71e9d9345e84e43b870f9451ce1f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
-  deploying: 0
+  minX: -9
+  minY: -6
+  maxX: 9
+  maxY: 6
+  minSpeed: 8
+  maxSpeed: 30
+  secondsToMaxDifficulty: 60
+  collided: 0
 --- !u!96 &223137645
 TrailRenderer:
   serializedVersion: 2
@@ -470,7 +476,7 @@ EdgeCollider2D:
   m_UseAdjacentEndPoint: 0
 --- !u!95 &223137648
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -487,7 +493,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &223137649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,6 +1513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

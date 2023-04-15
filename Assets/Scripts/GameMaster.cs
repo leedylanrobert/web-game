@@ -35,22 +35,22 @@ public class GameMaster : MonoBehaviour
         {
             backgroundMusic = GameObject.FindGameObjectWithTag("Background Music").GetComponent<AudioSource>();
 
-            if (!isPaused)
-            {
-                pausePanel.SetActive(true);
-                backgroundMusic.Pause();
-                audioSource.PlayOneShot(pause, 0.75f);
-                Time.timeScale = 0;
-            }
-            else
-            {
-                pausePanel.SetActive(false);
-                Time.timeScale = 1;
-                backgroundMusic.UnPause();
-            }
-            isPaused = !isPaused;
-            trailCollider.isPaused = !trailCollider.isPaused;
-            followTouch.isPaused = !followTouch.isPaused;
+            // if (!isPaused)
+            // {
+            //     pausePanel.SetActive(true);
+            //     backgroundMusic.Pause();
+            //     audioSource.PlayOneShot(pause, 0.75f);
+            //     Time.timeScale = 0;
+            // }
+            // else
+            // {
+            //     pausePanel.SetActive(false);
+            //     Time.timeScale = 1;
+            //     backgroundMusic.UnPause();
+            // }
+            // isPaused = !isPaused;
+            // trailCollider.isPaused = !trailCollider.isPaused;
+            // followTouch.isPaused = !followTouch.isPaused;
         }
     }
 
@@ -60,7 +60,7 @@ public class GameMaster : MonoBehaviour
         backgroundMusic.UnPause();
         isPaused = !isPaused;
         trailCollider.isPaused = !trailCollider.isPaused;
-        followTouch.isPaused = !followTouch.isPaused;
+        // followTouch.isPaused = !followTouch.isPaused;
     }
 
     //Use for physical pause button
@@ -81,7 +81,7 @@ public class GameMaster : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         trailCollider.isPaused = !trailCollider.isPaused;
-        followTouch.isPaused = !followTouch.isPaused;
+        // followTouch.isPaused = !followTouch.isPaused;
     }
 
     public void Restart() {
@@ -89,7 +89,7 @@ public class GameMaster : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         trailCollider.isPaused = !trailCollider.isPaused;
-        followTouch.isPaused = !followTouch.isPaused;
+        // followTouch.isPaused = !followTouch.isPaused;
     }
 
     public void GoToMainMenu() {
