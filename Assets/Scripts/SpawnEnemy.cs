@@ -24,6 +24,9 @@ public class SpawnEnemy : MonoBehaviour
     public float secondsToMaxDifficulty;
     public float deltaTimeInterval = 6.0f;
 
+    float spiderWidth;
+    float spiderHeight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,9 @@ public class SpawnEnemy : MonoBehaviour
 
         xMax = topRightWorld.x;
         yMax = topRightWorld.y;
+
+        spiderWidth = GameObject.Find("Spider").transform.localScale.x;
+        spiderHeight = GameObject.Find("Spider").transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -64,13 +70,13 @@ public class SpawnEnemy : MonoBehaviour
 
                 // Get random spawn point
                 deltaTimeCounter = 0f;
-                Vector3 randomPosition = RandomPosition();
+                Vector3 randomPosition = RandomPosition(randomEnemy);
                 Instantiate(randomEnemy, randomPosition, transform.rotation);
             }
         }
     }
 
-    Vector3 RandomPosition() 
+    Vector3 RandomPosition(GameObject enemy) 
     {
         int side = Random.Range(0,4);
 
@@ -91,24 +97,24 @@ public class SpawnEnemy : MonoBehaviour
                 // newX = Random.Range(-xMax + 0.6f, xMax - 0.6f);
                 newX = xVals[Random.Range(0, 2)];
 
-                newY = yMax + 0.8f;
+                newY = yMax + (spiderHeight / 2) + (enemy.transform.localScale.y / 2);
                 position = new Vector2(newX,newY);
                 break;
             case 1:
                 // Right
-                newX = xMax + 0.8f;
+                newX = xMax + (spiderWidth / 2) + (enemy.transform.localScale.x / 2);
                 newY = Random.Range(-yMax + 1.2f, yMax - 1.2f);
                 position = new Vector2(newX, newY);
                 break;
             case 2:
                 // Down
                 newX = Random.Range(-xMax + 1.2f, xMax - 1.2f);
-                newY = -yMax - 0.8f;
+                newY = -yMax - (spiderHeight / 2) - (enemy.transform.localScale.y / 2);
                 position = new Vector2(newX, newY);
                 break;
             case 3: 
                 // Left
-                newX = -xMax - 0.8f;
+                newX = -xMax - (spiderWidth / 2) - (enemy.transform.localScale.y / 2);
                 newY = Random.Range(-yMax + 1.2f, yMax - 1.2f);
                 position = new Vector2(newX, newY);
                 break;

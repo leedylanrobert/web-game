@@ -36,6 +36,8 @@ public class Entry : MonoBehaviour
 
     AudioSource audioSource;
 
+    Vector3 localScale;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,8 @@ public class Entry : MonoBehaviour
         Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
         Vector3 bottomLeftWorld = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
+
+        localScale = transform.localScale;
 
         xMax = topRightWorld.x;
         yMax = topRightWorld.y;
@@ -56,22 +60,22 @@ public class Entry : MonoBehaviour
         if (position.y > yMax) 
         {
             // Up
-            countdownPosition = new Vector3(position.x, position.y - 1.3f, 1);
+            countdownPosition = new Vector3(position.x, position.y - 1.3f - (localScale.y / 2), 1);
         }
         else if (position.x > xMax)
         {
             // Right
-            countdownPosition = new Vector3(position.x - 1.3f, position.y);
+            countdownPosition = new Vector3(position.x - 1.3f - (localScale.x / 2), position.y);
         }
         else if (position.y < -yMax)
         {
             // Down
-            countdownPosition = new Vector3(position.x, position.y + 1.3f);
+            countdownPosition = new Vector3(position.x, position.y + 1.3f + (localScale.y / 2));
         }
         else
         {
             // Left
-            countdownPosition = new Vector3(position.x + 1.3f, position.y);
+            countdownPosition = new Vector3(position.x + 1.3f + (localScale.x / 2), position.y);
         }
 
         Transform parent = GameObject.Find("Canvas").transform;
