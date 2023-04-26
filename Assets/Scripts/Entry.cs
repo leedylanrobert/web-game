@@ -11,6 +11,7 @@ public class Entry : MonoBehaviour
 
     public TMP_Text countdown;
     public SpriteRenderer enemy;
+    public Font font;
 
     private float timeElapsed = 0f;
     private TMP_Text selfText;
@@ -22,10 +23,14 @@ public class Entry : MonoBehaviour
 
     private float xMax;
     private float yMax;
+    private float xMin;
+    private float yMin;
 
     public float secondsToMaxDifficulty;
     private float tickInterval = 4f;
     private float baseTickInterval = 4f;
+
+    private Vector3 countdownPosition;
 
     private Vector2 soundPosition = new Vector2(0f, 0f);
 
@@ -37,48 +42,71 @@ public class Entry : MonoBehaviour
 
         Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+        Vector3 bottomLeftWorld = camera.ViewportToWorldPoint(new Vector3(0, 0, camera.nearClipPlane));
 
         xMax = topRightWorld.x;
         yMax = topRightWorld.y;
+        xMin = bottomLeftWorld.x;
+        yMin = bottomLeftWorld.y;
 
         RectTransform canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>();
 
         Vector3 position = transform.position;
-        Vector3 countdownPosition;
 
         if (position.y > yMax) 
         {
             // Up
-            countdownPosition = new Vector3(position.x, position.y - 0.8f, 1);
+            countdownPosition = new Vector3(position.x, position.y - 1.3f, 1);
         }
         else if (position.x > xMax)
         {
             // Right
-            countdownPosition = new Vector3(position.x - 1.4f, position.y);
+            countdownPosition = new Vector3(position.x - 1.3f, position.y);
         }
         else if (position.y < -yMax)
         {
             // Down
-            countdownPosition = new Vector3(position.x, position.y + 1.5f);
+            countdownPosition = new Vector3(position.x, position.y + 1.3f);
         }
         else
         {
             // Left
-            countdownPosition = new Vector3(position.x + 1.0f, position.y);
+            countdownPosition = new Vector3(position.x + 1.3f, position.y);
         }
 
         Transform parent = GameObject.Find("Canvas").transform;
         Vector3 countdownVector3 = position;
 
-        if (enemy.color.r == 1.00) {
-            countdown.color = new Color(1.0f, 0.902f, 0.251f, 1.0f);
+        switch (gameObject.name)
+        {
+            case "Bee(Clone)":
+                countdown.color = Color.yellow;
+                break;
+            case "Dragonfly(Clone)":
+                countdown.color = Color.blue;
+                break;
+            case "Pillbug(Clone)":
+                countdown.color = Color.grey;
+                break;
+            case "Fly(Clone)":
+                countdown.color = Color.green;
+                break;
+            case "Scorpion(Clone)":
+                countdown.color = new Color(140f/255f, 65f / 255f, 0);
+                break;
+            default:
+                countdown.color = Color.red;
+                break;
         }
-        else if (enemy.color.r == 0) {
-            countdown.color = new Color(0.058f, 0.538f, 0.146f, 1.0f);
-        }
-        else {
-            countdown.color = enemy.color;
-        }
+        // if (enemy.color.r == 1.00) {
+        //     countdown.color = new Color(1.0f, 0.902f, 0.251f, 1.0f);
+        // }
+        // else if (enemy.color.r == 0) {
+        //     countdown.color = new Color(0.058f, 0.538f, 0.146f, 1.0f);
+        // }
+        // else {
+        //     countdown.color = enemy.color;
+        // }
 
         countdown.text = "3";
         selfText = Instantiate(countdown, countdownPosition, transform.rotation, parent);
@@ -86,7 +114,6 @@ public class Entry : MonoBehaviour
         audioSource.PlayOneShot(tick, volume);
     }
 
-    // Update is called once per frame
     void Update()
     {
         CountDown();

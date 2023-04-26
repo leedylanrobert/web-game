@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1379638258938177318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7, y: -2, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 2, y: 0.96000004, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,11 +79,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b846a3a3975794beb9c0b6c2af06861d, type: 3}
   m_Color: {r: 1, g: 0.9843137, b: 0.25098038, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -162,18 +162,19 @@ MonoBehaviour:
   isSpawned: 0
   countdown: {fileID: 5489004746478108274, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
   enemy: {fileID: 1379638258938177315}
+  font: {fileID: 12800000, guid: 2e924efdc54c4cf4f8fbdbc5eb746813, type: 3}
   tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
   spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}
   secondsToMaxDifficulty: 90
 --- !u!95 &3260971160768460070
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379638258938177318}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f7f97b8e32d1b46428612832a717498f, type: 2}
   m_CullingMode: 0
@@ -184,7 +185,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &853159498345431534
 AudioSource:
   m_ObjectHideFlags: 0

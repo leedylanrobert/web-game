@@ -162,12 +162,13 @@ MonoBehaviour:
   isSpawned: 0
   countdown: {fileID: 5489004746478108274, guid: 16fc158c2ca197742bddb81eaf44402a, type: 3}
   enemy: {fileID: 6466899754803479417}
+  font: {fileID: 12800000, guid: 2e924efdc54c4cf4f8fbdbc5eb746813, type: 3}
   tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
   spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}
   secondsToMaxDifficulty: 90
 --- !u!95 &7947792032663448995
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,7 +185,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &1240159560553372367
 AudioSource:
   m_ObjectHideFlags: 0

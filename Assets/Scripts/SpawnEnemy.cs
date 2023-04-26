@@ -10,6 +10,9 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject ant;
     public GameObject bee;
     public GameObject dragonfly;
+    public GameObject pillbug;
+    public GameObject fly;
+    public GameObject scorpion;
     private GameObject[] enemies;
 
     private float xMax;
@@ -24,7 +27,7 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemies = new GameObject[]{ant, bee, dragonfly};
+        enemies = new GameObject[]{ant, bee, dragonfly, pillbug, fly, scorpion};
 
         Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
@@ -36,6 +39,12 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Vector3 topRightWorld = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
+
+        xMax = topRightWorld.x;
+        yMax = topRightWorld.y;
+
         Spawn();
         deltaTimeInterval = 6.0f - (4.0f * GetDifficultyPercent());
     }
@@ -49,12 +58,14 @@ public class SpawnEnemy : MonoBehaviour
             if (deltaTimeCounter >= deltaTimeInterval)
             {
                 // Get random enemy
-                int enemyIndex = random.Next(3);
+                int enemyIndex = random.Next(6);
+
                 GameObject randomEnemy = enemies[enemyIndex];
 
                 // Get random spawn point
                 deltaTimeCounter = 0f;
-                Instantiate(randomEnemy, RandomPosition(), transform.rotation);
+                Vector3 randomPosition = RandomPosition();
+                Instantiate(randomEnemy, randomPosition, transform.rotation);
             }
         }
     }
@@ -62,6 +73,7 @@ public class SpawnEnemy : MonoBehaviour
     Vector3 RandomPosition() 
     {
         int side = Random.Range(0,4);
+
         // int side guide: 0: up, 1: right, 2: down, 3: left
 
         float newX = 0f;

@@ -28,6 +28,8 @@ public class TrailCollider : MonoBehaviour
 
     public bool isPaused = false;
 
+    public Vector2[] trailPoints;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -35,21 +37,15 @@ public class TrailCollider : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)){
-            // followTouch.deploying = true;
-            UpdateCollider();
-        }else if (!isPaused) {
-            _tr.Clear();
-            // followTouch.deploying = false;
-        }
+        UpdateCollider();
+
     }
 
     void UpdateCollider()
     {
         Vector3[] pointsInTrailRenderer3d = new Vector3[_tr.positionCount]; 
         _tr.GetPositions(pointsInTrailRenderer3d);
-        Vector2[] pointsInTrailRenderer = ConvertArray(pointsInTrailRenderer3d); 
-
+        Vector2[] pointsInTrailRenderer = ConvertArray(pointsInTrailRenderer3d);
         if (pointsInTrailRenderer.Length > 1)
         {
 
@@ -83,7 +79,6 @@ public class TrailCollider : MonoBehaviour
                         crossed = intersect(newPoint, prevPoint, headPoint, tailPoint);
                         if (crossed)
                         {
-                            
                             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
                             Vector2 intersection = CreateIntersection(newPoint, prevPoint, headPoint, tailPoint);
@@ -103,6 +98,8 @@ public class TrailCollider : MonoBehaviour
                 }
             }
         }
+
+        trailPoints = pointsInTrailRenderer;
     }
 
     void KillEnemies(GameObject[] enemies, bool[] inWeb)
