@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2167169387617560878}
   - component: {fileID: 1895836658955642748}
   - component: {fileID: 4956826856518842118}
+  - component: {fileID: 2944371553284856396}
   m_Layer: 0
   m_Name: Pillbug
   m_TagString: Enemy
@@ -32,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 8972363744189073367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7, y: 2, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.5581395, y: 0.60913706, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
+  m_DrawMode: 0
   m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -146,6 +147,7 @@ MonoBehaviour:
   tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
   spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}
   secondsToMaxDifficulty: 90
+  enemyProps: {fileID: 2944371553284856396}
 --- !u!95 &2167169387617560878
 Animator:
   serializedVersion: 5
@@ -277,5 +279,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entry: {fileID: -8274392007037594249}
   secondsToMaxDifficulty: 60
-  minSpeed: 0.75
+  minSpeed: 3
   maxSpeed: 8
+  enemyProps: {fileID: 2944371553284856396}
+  strike: {fileID: 8300000, guid: bab40049e27794b34bd5c6832860a886, type: 3}
+  bowling: {fileID: 8300000, guid: 035ef2d71cad744b5b6f3feef7572d51, type: 3}
+--- !u!114 &2944371553284856396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972363744189073367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e1516eb2aca45b38ef05fbfe2887cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSpawned: 0
+  isOnScreen: 0

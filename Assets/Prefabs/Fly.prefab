@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2167169387617560878}
   - component: {fileID: 1895836658955642748}
   - component: {fileID: 331013848742722309}
+  - component: {fileID: 1980455961128688440}
   m_Layer: 0
   m_Name: Fly
   m_TagString: Enemy
@@ -146,6 +147,7 @@ MonoBehaviour:
   tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
   spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}
   secondsToMaxDifficulty: 90
+  enemyProps: {fileID: 1980455961128688440}
 --- !u!95 &2167169387617560878
 Animator:
   serializedVersion: 5
@@ -279,3 +281,15 @@ MonoBehaviour:
   maxSpeed: 12
   secondsToMaxDifficulty: 60
   entry: {fileID: -8274392007037594249}
+--- !u!114 &1980455961128688440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972363744189073367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e1516eb2aca45b38ef05fbfe2887cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

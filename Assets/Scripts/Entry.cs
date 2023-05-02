@@ -38,6 +38,8 @@ public class Entry : MonoBehaviour
 
     Vector3 localScale;
 
+    public EnemyProps enemyProps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -135,6 +137,7 @@ public class Entry : MonoBehaviour
         if (timeElapsed > (tickInterval * (3f / 4f)))
         {
             isSpawned = true;
+            enemyProps.isSpawned = true;
             selfText.text = "!";
             if (playedTimes < 4)
             {

@@ -42,8 +42,8 @@ public class Scorpion : MonoBehaviour
     public TrailCollider trailCollider;
 
     public AudioClip snip;
-    float volume = 0.5f;
     AudioSource audioSource;
+    float volume = 0.75f;
 
     // Start is called before the first frame update
     void Start()
@@ -97,7 +97,6 @@ public class Scorpion : MonoBehaviour
 
                 halfwayPoint = Vector2.MoveTowards(transform.position, targetPosition, 3f);
                 halfwayVelocity = acceleration * .75f;
-
             }
             
             timeCount += Time.deltaTime;
@@ -196,6 +195,7 @@ public class Scorpion : MonoBehaviour
 
                         trailCollider._tr.Clear();
                         trailCollider._tr.AddPositions(final);
+                        audioSource.PlayOneShot(snip, volume);
                     }
                 }
             }

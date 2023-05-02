@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2167169387617560878}
   - component: {fileID: 1895836658955642748}
   - component: {fileID: 6185878670634638886}
+  - component: {fileID: -1608569319382597181}
   m_Layer: 0
   m_Name: Scorpion
   m_TagString: Enemy
@@ -146,6 +147,7 @@ MonoBehaviour:
   tick: {fileID: 8300000, guid: 385bef5485836754ba43ee71dd930b65, type: 3}
   spawn: {fileID: 8300000, guid: b8d4b2acc8d474345a2547b9e4c027d1, type: 3}
   secondsToMaxDifficulty: 90
+  enemyProps: {fileID: -1608569319382597181}
 --- !u!95 &2167169387617560878
 Animator:
   serializedVersion: 5
@@ -285,3 +287,15 @@ MonoBehaviour:
   entry: {fileID: -8274392007037594249}
   trailCollider: {fileID: 0}
   snip: {fileID: 8300000, guid: 7643685e858b1407cbd189917fd1b7ed, type: 3}
+--- !u!114 &-1608569319382597181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972363744189073367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e1516eb2aca45b38ef05fbfe2887cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

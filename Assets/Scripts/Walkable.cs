@@ -31,7 +31,7 @@ namespace Movement
         {
             var desiredVelocity = direction * Mathf.Lerp(minSpeed, maxSpeed, GetDifficultyPercent());
             var deltaVelocity = desiredVelocity - rigidbody.velocity;
-            Vector3 moveForce = deltaVelocity * (force * ForcePower * Time.fixedDeltaTime);
+            Vector3 moveForce = (deltaVelocity * (force * ForcePower * Time.deltaTime)) * 150f;
             rigidbody.AddForce(moveForce);
         }
 

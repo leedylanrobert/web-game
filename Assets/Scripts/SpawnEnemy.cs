@@ -22,7 +22,7 @@ public class SpawnEnemy : MonoBehaviour
     private System.Random random = new System.Random();
 
     public float secondsToMaxDifficulty;
-    public float deltaTimeInterval = 6.0f;
+    public float deltaTimeInterval = 3.0f;
 
     float spiderWidth;
     float spiderHeight;
@@ -65,6 +65,7 @@ public class SpawnEnemy : MonoBehaviour
             {
                 // Get random enemy
                 int enemyIndex = random.Next(6);
+                // int enemyIndex = 3;
 
                 GameObject randomEnemy = enemies[enemyIndex];
 

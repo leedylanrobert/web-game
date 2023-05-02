@@ -93,7 +93,7 @@ public class Orbit : MonoBehaviour
         else if (entry.isSpawned == true)
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] validEnemies = enemies.Where(enemy => enemy.name != "Fly(Clone)").ToArray();
+            GameObject[] validEnemies = enemies.Where(enemy => enemy.name != "Fly(Clone)" & enemy.GetComponent<EnemyProps>().isSpawned == true).ToArray();
 
             if (validEnemies.Length > 0)
             {
