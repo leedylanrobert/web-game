@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 using Flat;
+using System.IO;
+using UnityEngine.UI;
  
 //Add this script to a new gameobject at 0,0,0
 //make sure the gameobject position does not change.
@@ -30,6 +32,8 @@ public class TrailCollider : MonoBehaviour
 
     public Vector2[] trailPoints;
 
+    public String debugMode;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -38,7 +42,6 @@ public class TrailCollider : MonoBehaviour
     void Update()
     {
         UpdateCollider();
-
     }
 
     void UpdateCollider()
@@ -79,6 +82,7 @@ public class TrailCollider : MonoBehaviour
                         crossed = intersect(newPoint, prevPoint, headPoint, tailPoint);
                         if (crossed)
                         {
+
                             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
                             Vector2 intersection = CreateIntersection(newPoint, prevPoint, headPoint, tailPoint);
@@ -86,13 +90,63 @@ public class TrailCollider : MonoBehaviour
                             rawLoop[rawLoop.Length - 1] = intersection;
 
                             Vector2[] finalLoop = CreateLoopArray(rawLoop, i - 1);
-                            bool[] killEnemies = IsInsideWeb(enemies, finalLoop);
-                            // AudioSource.PlayClipAtPoint(splat, transform.position, volume);
-                            audioSource.PlayOneShot(splat, volume);
-                            KillEnemies(enemies, killEnemies);
 
-                            crossed = false;
-                            _tr.Clear();
+                            // If debug mode is shapeCapture, stop game, take screenshot
+                            if (debugMode == "shapeCapture")
+                            {
+                                GameObject spider = GameObject.Find("Spider");
+                                Destroy(spider);
+                                GameObject points = GameObject.Find("Points");
+                                Destroy(points);
+                                GameObject score = GameObject.Find("Highscore");
+                                Destroy(score);
+                                GameObject bg = GameObject.Find("Ground");
+                                Destroy(bg);
+                                GameObject heart1 = GameObject.Find("Heart1");
+                                Destroy(heart1);
+                                GameObject heart2 = GameObject.Find("Heart2");
+                                Destroy(heart2);
+                                GameObject heart3 = GameObject.Find("Heart3");
+                                Destroy(heart3);
+                                GameObject camera = GameObject.Find("Main Camera");
+                                camera.GetComponent<Camera>().backgroundColor = Color.black;
+
+                                GameObject shapeLine = new GameObject();
+                                shapeLine.AddComponent<LineRenderer>();
+                                LineRenderer lr = shapeLine.GetComponent<LineRenderer>();
+                                lr.material = new Material(Shader.Find("Sprites/Default"));
+                                lr.SetColors(Color.white, Color.white);
+                                lr.SetWidth(0.1f, 0.1f);
+
+                                Vector3[] finalLoop3D = new Vector3[finalLoop.Length];
+                                for (int j = 0; j < finalLoop.Length; j++)
+                                {
+                                    Vector2 point = finalLoop[j];
+                                    finalLoop3D[j] = new Vector3(point.x, point.y, 0f);
+                                }
+
+                                lr.positionCount = finalLoop3D.Length;
+                                lr.SetPositions(finalLoop3D);
+
+                                ScreenCapture.CaptureScreenshot(Application.dataPath + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
+                                UnityEditor.AssetDatabase.Refresh();
+                                Debug.Log("Screenshotted");
+                            }
+                            else
+                            {
+                                bool[] killEnemies = IsInsideWeb(enemies, finalLoop);
+
+                                // AudioSource.PlayClipAtPoint(splat, transform.position, volume);
+                                audioSource.PlayOneShot(splat, volume);
+                                KillEnemies(enemies, killEnemies);
+
+                                crossed = false;
+
+                                // ScreenCapture.CaptureScreenshot(Application.dataPath + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
+                                // UnityEditor.AssetDatabase.Refresh();
+                                // Debug.Log("Screenshotted");
+                                _tr.Clear();
+                            }
                         }
                     }
                 }

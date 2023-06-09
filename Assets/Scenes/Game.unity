@@ -600,6 +600,7 @@ MonoBehaviour:
   followTouch: {fileID: 223137644}
   isPaused: 0
   trailPoints: []
+  debugMode: none
 --- !u!68 &223137647
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1106,7 +1107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588836086}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90642114cd0183446afbcf2279780b6e, type: 3}
   m_Name: 
@@ -1863,7 +1864,7 @@ GameObject:
   - component: {fileID: 1050172274}
   - component: {fileID: 1050172275}
   m_Layer: 0
-  m_Name: ground
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

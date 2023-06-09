@@ -65,7 +65,6 @@ public class SpawnEnemy : MonoBehaviour
             {
                 // Get random enemy
                 int enemyIndex = random.Next(6);
-                // int enemyIndex = 3;
 
                 GameObject randomEnemy = enemies[enemyIndex];
 
