@@ -12,6 +12,7 @@ TagManager:
   - Canvas
   - Background Music
   - Pause Menu
+  - Timer
   layers:
   - Default
   - TransparentFX
